@@ -1,5 +1,8 @@
 # CleanAir COMP3001
 
 ## Backend
-We're running Python/Flask with mySQL. Make sure you have a Python distribution installed (this was created with 2.7.10) along with pip (package manager).
-If you don't have Flask installed: `pip install flask` should do the trick.
+We're running Python/Flask with mySQL.
+In order to install the dependencies, install `pip` and then run `pip install virtualenv`.
+Then clone this repo, initialise the local virtual env using `virtualenv cleanairenv`.
+Activate the virtual environment with `source /cleanairenv/bin/activate`, your shell name should change.
+Run `/cleanairenv/bin/pip install -r requirements.txt` to install dependencies locally.
