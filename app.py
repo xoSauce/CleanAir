@@ -20,7 +20,7 @@ def json_date_handler(obj):
 def get_pollution_data():
     print "Requesting data"
     cnx = awsdb.connect();
-    result = awsdb.query(cnx, "SELECT * FROM pollution_table LIMIT 10");
+    result = awsdb.query(cnx, "SELECT * FROM pollution_table");
     awsdb.close(cnx);
     response = json.dumps(result, default=json_date_handler)
     return response
