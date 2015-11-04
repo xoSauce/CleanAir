@@ -1,4 +1,5 @@
 import awsdb as db
+from app import get_pollution_data
 if __name__ == '__main__':
 	try:
 		cnx = db.connect();
@@ -9,6 +10,7 @@ if __name__ == '__main__':
 			param
 			)
 		print rows
+                get_pollution_data()
 		param2 = [5]
 		db.mutate(cnx,
 			"""REPLACE INTO {table} (id) VALUES (%s) """.format(table=table1),
