@@ -15,6 +15,15 @@ config = {
     'db': 'cleanair'
 }
 
+import MySQLdb.cursors
+
+class MySQLCursorDict(MySQLdb.cursors.Cursor):
+    def fetchone(self):
+        row = self._fetch_row()
+        if row:
+            return dict(zip(self.column_names, self._row_to_python(row)))
+        return None
+
 def connect():
     cnx = None
     try:
@@ -35,14 +44,12 @@ def close(cnx):
 def query(cnx, query, param=None):    
     try:
         result = []
-        cursor = cnx.cursor()
+        cursor = cnx.cursor(cursorclass=MySQLdb.cursors.DictCursor)
         cursor.execute(query, param)
-        for res in cursor.fetchall():
-            result += res
-        return result
+        out = cursor.fetchall();
+        return out
     except Exception as e:
         #error
-        print cursor._last_executed
         raise e
 
 def mutate(cnx, query, param=None):
