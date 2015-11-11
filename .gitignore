@@ -1,2 +1,3 @@
 cleanairenv
 env
+**/node_modules

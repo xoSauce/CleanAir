@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Clean air Team!"
+    return render_template('./../frontend/index.html')
 
 def json_date_handler(obj):
     """JSON serializer for objects not serializable by default json code"""
