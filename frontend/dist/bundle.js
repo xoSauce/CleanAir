@@ -19025,7 +19025,16 @@ var CleanAirApp = React.createClass({
     return React.createElement(
       'div',
       null,
-      'CleanAir'
+      React.createElement(
+        'h1',
+        null,
+        'The CleanAir Frontend App'
+      ),
+      React.createElement(
+        'h2',
+        null,
+        'Built in UCL'
+      )
     );
   }
 });

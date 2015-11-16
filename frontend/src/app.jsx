@@ -4,7 +4,8 @@ var CleanAirApp = React.createClass({
   render: function(){
     return (
       <div>
-        CleanAir
+        <h1>The CleanAir Frontend App</h1>
+        <h2>Built in UCL</h2>
       </div>
     )
   }
