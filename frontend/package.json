@@ -1,5 +1,5 @@
 {
-  "name": "beercalculator",
+  "name": "CleanAir Frontend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,6 +12,7 @@
     "babelify": "^6.4.0",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
+    "react-localstorage": "^0.2.8",
     "react-slider": "^0.6.0"
   },
   "devDependencies": {
