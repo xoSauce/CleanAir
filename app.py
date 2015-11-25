@@ -1,12 +1,17 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 import json
 import awsdb
 from datetime import date, datetime
-app = Flask(__name__)
+app = Flask(__name__, template_folder='frontend',)
 
 @app.route("/")
 def hello():
-    return "Clean air Team!"
+    return render_template('index.html')
+    # return render_template('./../frontend/index.html')
+
+@app.route("/dist/bundle.js")
+def react_app():    
+    return open('./frontend/dist/bundle.js').read()
 
 def json_date_handler(obj):
     """JSON serializer for objects not serializable by default json code"""
@@ -26,4 +31,4 @@ def get_pollution_data():
     return response
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(debug=True,host='0.0.0.0')
