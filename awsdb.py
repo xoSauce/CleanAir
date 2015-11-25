@@ -24,6 +24,18 @@ class MySQLCursorDict(MySQLdb.cursors.Cursor):
             return dict(zip(self.column_names, self._row_to_python(row)))
         return None
 
+class Connection():
+    def __init__(self):
+        self.cnx = None
+
+    def __enter__(self):
+        self.cnx = connect()
+        return self.cnx
+
+    def __exit__(self, type, value, traceback):
+        close(self.cnx)
+
+
 def connect():
     cnx = None
     try:
