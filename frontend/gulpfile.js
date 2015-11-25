@@ -16,7 +16,7 @@ gulp.task('cssMinfy', function(){
 });
 
 gulp.task('browserify', function () {
-    watchify(browserify('src/app.jsx'))
+    watchify(browserify('./src/index.js'))
         .transform(babelify)
         .bundle()
         .on('error', function(err) {
@@ -36,5 +36,6 @@ gulp.task('watch', function () {
             livereload: true,
         }));
     gulp.start('default');
+    gulp.watch('src/*.jsx', ['default']);
     gulp.watch('src/*.jsx', ['default']);
 });

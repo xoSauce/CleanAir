@@ -1,5 +1,5 @@
 {
-  "name": "CleanAirFrontend",
+  "name": "CleanAir-Frontend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,9 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "babelify": "^6.4.0",
+    "history": "^1.13.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-localstorage": "^0.2.8",
+    "react-router": "^1.0.0",
     "react-slider": "^0.6.0"
   },
   "devDependencies": {
