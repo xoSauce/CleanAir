@@ -6,7 +6,7 @@ var Link = require('react-router').Link;
 export default class SelectLocation extends React.Component {
   render(){
     return (<div>
-      <h1>Select a Location</h1>
+      <h1>Search</h1>
       <div style={{width: '500px', margin: 'auto'}}>
         <div style={{width: '50%', float: 'left'}}>
           <Link to="/map">Use Current Location</Link>

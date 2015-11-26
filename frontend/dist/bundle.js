@@ -24245,6 +24245,55 @@ function _inherits(subClass, superClass) { if (typeof superClass !== 'function' 
 var React = require('react');
 var Link = require('react-router').Link;
 
+var InfoModal = (function (_React$Component) {
+  _inherits(InfoModal, _React$Component);
+
+  function InfoModal() {
+    _classCallCheck(this, InfoModal);
+
+    _get(Object.getPrototypeOf(InfoModal.prototype), 'constructor', this).apply(this, arguments);
+  }
+
+  _createClass(InfoModal, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        'div',
+        null,
+        'Info Modal',
+        React.createElement(
+          Link,
+          { to: "/map" },
+          'Close'
+        )
+      );
+    }
+  }]);
+
+  return InfoModal;
+})(React.Component);
+
+exports['default'] = InfoModal;
+module.exports = exports['default'];
+
+},{"react":213,"react-router":80}],219:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var React = require('react');
+var Link = require('react-router').Link;
+
 var Intro = (function (_React$Component) {
   _inherits(Intro, _React$Component);
 
@@ -24290,7 +24339,7 @@ var Intro = (function (_React$Component) {
 exports['default'] = Intro;
 module.exports = exports['default'];
 
-},{"react":213,"react-router":80}],219:[function(require,module,exports){
+},{"react":213,"react-router":80}],220:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -24339,7 +24388,8 @@ var Map = (function (_React$Component) {
           'MAP'
         ),
         React.createElement(_SideNavJsx2['default'], null),
-        React.createElement(_GMapsJsx2['default'], null)
+        React.createElement(_GMapsJsx2['default'], null),
+        this.props.children
       );
     }
   }]);
@@ -24350,7 +24400,56 @@ var Map = (function (_React$Component) {
 exports['default'] = Map;
 module.exports = exports['default'];
 
-},{"./GMaps.jsx":216,"./SideNav.jsx":221,"react":213,"react-router":80}],220:[function(require,module,exports){
+},{"./GMaps.jsx":216,"./SideNav.jsx":223,"react":213,"react-router":80}],221:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var React = require('react');
+var Link = require('react-router').Link;
+
+var PropertyModal = (function (_React$Component) {
+  _inherits(PropertyModal, _React$Component);
+
+  function PropertyModal() {
+    _classCallCheck(this, PropertyModal);
+
+    _get(Object.getPrototypeOf(PropertyModal.prototype), 'constructor', this).apply(this, arguments);
+  }
+
+  _createClass(PropertyModal, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        'div',
+        null,
+        'Property Modal',
+        React.createElement(
+          Link,
+          { to: "/map" },
+          'Close'
+        )
+      );
+    }
+  }]);
+
+  return PropertyModal;
+})(React.Component);
+
+exports['default'] = PropertyModal;
+module.exports = exports['default'];
+
+},{"react":213,"react-router":80}],222:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -24386,7 +24485,7 @@ var SelectLocation = (function (_React$Component) {
         React.createElement(
           'h1',
           null,
-          'Select a Location'
+          'Search'
         ),
         React.createElement(
           'div',
@@ -24426,7 +24525,7 @@ var SelectLocation = (function (_React$Component) {
 exports['default'] = SelectLocation;
 module.exports = exports['default'];
 
-},{"react":213,"react-router":80}],221:[function(require,module,exports){
+},{"react":213,"react-router":80}],223:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -24458,8 +24557,56 @@ var SideNav = (function (_React$Component) {
     value: function render() {
       return React.createElement(
         'div',
-        { style: { width: '100px', float: 'left', height: window.height + 'px' } },
-        'This is actually the SideNav'
+        { style: { width: '100px', position: 'absolute', left: 0, top: 0, height: window.height + 'px' } },
+        React.createElement(
+          'h1',
+          null,
+          'Search'
+        ),
+        React.createElement(
+          'label',
+          null,
+          'Enter Postcode'
+        ),
+        React.createElement('input', { type: 'text', placeholder: 'Enter Postcode' }),
+        React.createElement('hr', null),
+        React.createElement(
+          'label',
+          null,
+          'Use current location'
+        ),
+        React.createElement('input', { type: 'checkbox' }),
+        React.createElement('hr', null),
+        React.createElement(
+          'div',
+          null,
+          React.createElement(
+            Link,
+            { to: '/map/property-modal' },
+            'Property Search Edit'
+          )
+        ),
+        React.createElement(
+          'div',
+          null,
+          'List of things that we are looking for'
+        ),
+        React.createElement('hr', null),
+        React.createElement(
+          'div',
+          null,
+          React.createElement(
+            Link,
+            { to: '/map/user-modal' },
+            'User information'
+          )
+        ),
+        React.createElement('hr', null),
+        React.createElement(
+          Link,
+          { to: "/map" },
+          'Search'
+        )
       );
     }
   }]);
@@ -24470,7 +24617,56 @@ var SideNav = (function (_React$Component) {
 exports['default'] = SideNav;
 module.exports = exports['default'];
 
-},{"react":213,"react-router":80}],222:[function(require,module,exports){
+},{"react":213,"react-router":80}],224:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var React = require('react');
+var Link = require('react-router').Link;
+
+var UserModal = (function (_React$Component) {
+  _inherits(UserModal, _React$Component);
+
+  function UserModal() {
+    _classCallCheck(this, UserModal);
+
+    _get(Object.getPrototypeOf(UserModal.prototype), 'constructor', this).apply(this, arguments);
+  }
+
+  _createClass(UserModal, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        'div',
+        null,
+        'User Modal',
+        React.createElement(
+          Link,
+          { to: "/map" },
+          'Close'
+        )
+      );
+    }
+  }]);
+
+  return UserModal;
+})(React.Component);
+
+exports['default'] = UserModal;
+module.exports = exports['default'];
+
+},{"react":213,"react-router":80}],225:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -24498,7 +24694,7 @@ _reactDom2['default'].render(_react2['default'].createElement(
   _routesJsx2['default']
 ), document.getElementById('app'));
 
-},{"./routes.jsx":223,"history":46,"react":213,"react-dom":58,"react-router":80}],223:[function(require,module,exports){
+},{"./routes.jsx":226,"history":46,"react":213,"react-dom":58,"react-router":80}],226:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -24533,13 +24729,31 @@ var _componentsMapJsx = require('./components/Map.jsx');
 
 var _componentsMapJsx2 = _interopRequireDefault(_componentsMapJsx);
 
+var _componentsPropertyModalJsx = require('./components/PropertyModal.jsx');
+
+var _componentsPropertyModalJsx2 = _interopRequireDefault(_componentsPropertyModalJsx);
+
+var _componentsUserModalJsx = require('./components/UserModal.jsx');
+
+var _componentsUserModalJsx2 = _interopRequireDefault(_componentsUserModalJsx);
+
+var _componentsInfoModalJsx = require('./components/InfoModal.jsx');
+
+var _componentsInfoModalJsx2 = _interopRequireDefault(_componentsInfoModalJsx);
+
 exports['default'] = _react2['default'].createElement(
   _reactRouter.Route,
   { component: _componentsAppJsx2['default'], history: history, path: '/' },
   _react2['default'].createElement(_reactRouter.IndexRoute, { component: _componentsIntroJsx2['default'] }),
   _react2['default'].createElement(_reactRouter.Route, { component: _componentsSelectLocationJsx2['default'], path: '/select-location' }),
-  _react2['default'].createElement(_reactRouter.Route, { component: _componentsMapJsx2['default'], path: '/map' })
+  _react2['default'].createElement(
+    _reactRouter.Route,
+    { component: _componentsMapJsx2['default'], path: '/map' },
+    _react2['default'].createElement(_reactRouter.Route, { component: _componentsUserModalJsx2['default'], path: '/map/user-modal' }),
+    _react2['default'].createElement(_reactRouter.Route, { component: _componentsPropertyModalJsx2['default'], path: '/map/property-modal' }),
+    _react2['default'].createElement(_reactRouter.Route, { component: _componentsInfoModalJsx2['default'], path: '/map/info-modal' })
+  )
 );
 module.exports = exports['default'];
 
-},{"./components/App.jsx":215,"./components/Home.jsx":217,"./components/Intro.jsx":218,"./components/Map.jsx":219,"./components/SelectLocation.jsx":220,"react":213,"react-router":80}]},{},[222]);
+},{"./components/App.jsx":215,"./components/Home.jsx":217,"./components/InfoModal.jsx":218,"./components/Intro.jsx":219,"./components/Map.jsx":220,"./components/PropertyModal.jsx":221,"./components/SelectLocation.jsx":222,"./components/UserModal.jsx":224,"react":213,"react-router":80}]},{},[225]);

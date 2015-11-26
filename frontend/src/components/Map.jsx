@@ -12,6 +12,7 @@ export default class Map extends React.Component {
         <h1>MAP</h1>
         <SideNav/>
         <GMaps/>
+        {this.props.children}
       </div>
       )
   }
