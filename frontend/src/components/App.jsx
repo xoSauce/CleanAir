@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import LocalStorageMixin from 'react-localstorage';
 
-export default class App extends React.Component {
-  render() {
+var App = React.createClass({
+  mixins: [LocalStorageMixin],
+  render: function() {
     let {children} = this.props;
     return (
-      <div>
-        <h1>Parent View</h1>
+      <div>nav and shit
         {children}
       </div>
     );
   }
-}
+});
+
+module.exports = App

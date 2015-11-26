@@ -24102,6 +24102,37 @@ module.exports = warning;
 },{"_process":57}],215:[function(require,module,exports){
 'use strict';
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactLocalstorage = require('react-localstorage');
+
+var _reactLocalstorage2 = _interopRequireDefault(_reactLocalstorage);
+
+var App = _react2['default'].createClass({
+  displayName: 'App',
+
+  mixins: [_reactLocalstorage2['default']],
+  render: function render() {
+    var children = this.props.children;
+
+    return _react2['default'].createElement(
+      'div',
+      null,
+      'nav and shit',
+      children
+    );
+  }
+});
+
+module.exports = App;
+
+},{"react":213,"react-localstorage":60}],216:[function(require,module,exports){
+'use strict';
+
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
@@ -24110,50 +24141,40 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _react = require('react');
+var React = require('react');
+var Link = require('react-router').Link;
 
-var _react2 = _interopRequireDefault(_react);
+var GMaps = (function (_React$Component) {
+  _inherits(GMaps, _React$Component);
 
-var App = (function (_React$Component) {
-  _inherits(App, _React$Component);
+  function GMaps() {
+    _classCallCheck(this, GMaps);
 
-  function App() {
-    _classCallCheck(this, App);
-
-    _get(Object.getPrototypeOf(App.prototype), 'constructor', this).apply(this, arguments);
+    _get(Object.getPrototypeOf(GMaps.prototype), 'constructor', this).apply(this, arguments);
   }
 
-  _createClass(App, [{
+  _createClass(GMaps, [{
     key: 'render',
     value: function render() {
-      var children = this.props.children;
-
-      return _react2['default'].createElement(
+      return React.createElement(
         'div',
         null,
-        _react2['default'].createElement(
-          'h1',
-          null,
-          'Parent View'
-        ),
-        children
+        'THE MAP'
       );
     }
   }]);
 
-  return App;
-})(_react2['default'].Component);
+  return GMaps;
+})(React.Component);
 
-exports['default'] = App;
+exports['default'] = GMaps;
 module.exports = exports['default'];
 
-},{"react":213}],216:[function(require,module,exports){
+},{"react":213,"react-router":80}],217:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -24206,55 +24227,250 @@ var Home = (function (_React$Component) {
 exports['default'] = Home;
 module.exports = exports['default'];
 
-},{"react":213,"react-router":80}],217:[function(require,module,exports){
+},{"react":213,"react-router":80}],218:[function(require,module,exports){
 'use strict';
 
-var React = require('react');
-var ReactDOM = require('react-dom');
-var LocalStorageMixin = require('react-localstorage');
-var CleanAirApp = React.createClass({
-  displayName: 'CleanAirApp',
-
-  mixins: [LocalStorageMixin],
-  getInitialState: function getInitialState() {
-    return {
-      lsTest: 'Change me'
-    };
-  },
-  render: function render() {
-    return React.createElement(
-      'div',
-      null,
-      React.createElement(
-        'h1',
-        null,
-        'The CleanAir Frontend App'
-      ),
-      React.createElement(
-        'h2',
-        null,
-        'Built in UCL'
-      ),
-      React.createElement(
-        'label',
-        null,
-        'The text below persists across tab closes'
-      ),
-      React.createElement(
-        'div',
-        null,
-        React.createElement('input', { type: 'text', onChange: this.handleChange, value: this.state.lsTest })
-      )
-    );
-  },
-  handleChange: function handleChange(event) {
-    this.setState({ lsTest: event.target.value });
-  }
+Object.defineProperty(exports, '__esModule', {
+  value: true
 });
 
-module.exports = CleanAirApp;
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-},{"react":213,"react-dom":58,"react-localstorage":60}],218:[function(require,module,exports){
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var React = require('react');
+var Link = require('react-router').Link;
+
+var Intro = (function (_React$Component) {
+  _inherits(Intro, _React$Component);
+
+  function Intro() {
+    _classCallCheck(this, Intro);
+
+    _get(Object.getPrototypeOf(Intro.prototype), 'constructor', this).apply(this, arguments);
+  }
+
+  _createClass(Intro, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        'div',
+        null,
+        React.createElement(
+          'h1',
+          null,
+          'CleanAir'
+        ),
+        React.createElement(
+          'h2',
+          null,
+          'Getting Started'
+        ),
+        React.createElement(
+          'p',
+          null,
+          'This page will give lots of information about the site'
+        ),
+        React.createElement(
+          Link,
+          { className: 'button', role: 'button', to: '/select-location' },
+          'Let\'s Go'
+        )
+      );
+    }
+  }]);
+
+  return Intro;
+})(React.Component);
+
+exports['default'] = Intro;
+module.exports = exports['default'];
+
+},{"react":213,"react-router":80}],219:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _SideNavJsx = require('./SideNav.jsx');
+
+var _SideNavJsx2 = _interopRequireDefault(_SideNavJsx);
+
+var _GMapsJsx = require('./GMaps.jsx');
+
+var _GMapsJsx2 = _interopRequireDefault(_GMapsJsx);
+
+var React = require('react');
+var Link = require('react-router').Link;
+
+var Map = (function (_React$Component) {
+  _inherits(Map, _React$Component);
+
+  function Map() {
+    _classCallCheck(this, Map);
+
+    _get(Object.getPrototypeOf(Map.prototype), 'constructor', this).apply(this, arguments);
+  }
+
+  _createClass(Map, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        'div',
+        null,
+        React.createElement(
+          'h1',
+          null,
+          'MAP'
+        ),
+        React.createElement(_SideNavJsx2['default'], null),
+        React.createElement(_GMapsJsx2['default'], null)
+      );
+    }
+  }]);
+
+  return Map;
+})(React.Component);
+
+exports['default'] = Map;
+module.exports = exports['default'];
+
+},{"./GMaps.jsx":216,"./SideNav.jsx":221,"react":213,"react-router":80}],220:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var React = require('react');
+var Link = require('react-router').Link;
+
+var SelectLocation = (function (_React$Component) {
+  _inherits(SelectLocation, _React$Component);
+
+  function SelectLocation() {
+    _classCallCheck(this, SelectLocation);
+
+    _get(Object.getPrototypeOf(SelectLocation.prototype), 'constructor', this).apply(this, arguments);
+  }
+
+  _createClass(SelectLocation, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        'div',
+        null,
+        React.createElement(
+          'h1',
+          null,
+          'Select a Location'
+        ),
+        React.createElement(
+          'div',
+          { style: { width: '500px', margin: 'auto' } },
+          React.createElement(
+            'div',
+            { style: { width: '50%', float: 'left' } },
+            React.createElement(
+              Link,
+              { to: '/map' },
+              'Use Current Location'
+            )
+          ),
+          React.createElement(
+            'div',
+            { style: { width: '50%', float: 'left' } },
+            React.createElement(
+              'label',
+              null,
+              'Enter Location:'
+            ),
+            React.createElement('input', { type: 'text', placeholder: 'Enter a PostCode' }),
+            React.createElement(
+              Link,
+              { to: '/map' },
+              'Search'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return SelectLocation;
+})(React.Component);
+
+exports['default'] = SelectLocation;
+module.exports = exports['default'];
+
+},{"react":213,"react-router":80}],221:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var React = require('react');
+var Link = require('react-router').Link;
+
+var SideNav = (function (_React$Component) {
+  _inherits(SideNav, _React$Component);
+
+  function SideNav() {
+    _classCallCheck(this, SideNav);
+
+    _get(Object.getPrototypeOf(SideNav.prototype), 'constructor', this).apply(this, arguments);
+  }
+
+  _createClass(SideNav, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        'div',
+        { style: { width: '100px', float: 'left', height: window.height + 'px' } },
+        'This is actually the SideNav'
+      );
+    }
+  }]);
+
+  return SideNav;
+})(React.Component);
+
+exports['default'] = SideNav;
+module.exports = exports['default'];
+
+},{"react":213,"react-router":80}],222:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -24282,7 +24498,7 @@ _reactDom2['default'].render(_react2['default'].createElement(
   _routesJsx2['default']
 ), document.getElementById('app'));
 
-},{"./routes.jsx":219,"history":46,"react":213,"react-dom":58,"react-router":80}],219:[function(require,module,exports){
+},{"./routes.jsx":223,"history":46,"react":213,"react-dom":58,"react-router":80}],223:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -24305,15 +24521,25 @@ var _componentsHomeJsx = require('./components/Home.jsx');
 
 var _componentsHomeJsx2 = _interopRequireDefault(_componentsHomeJsx);
 
-var _componentsLocalStorageJsx = require('./components/LocalStorage.jsx');
+var _componentsIntroJsx = require('./components/Intro.jsx');
 
-var _componentsLocalStorageJsx2 = _interopRequireDefault(_componentsLocalStorageJsx);
+var _componentsIntroJsx2 = _interopRequireDefault(_componentsIntroJsx);
+
+var _componentsSelectLocationJsx = require('./components/SelectLocation.jsx');
+
+var _componentsSelectLocationJsx2 = _interopRequireDefault(_componentsSelectLocationJsx);
+
+var _componentsMapJsx = require('./components/Map.jsx');
+
+var _componentsMapJsx2 = _interopRequireDefault(_componentsMapJsx);
 
 exports['default'] = _react2['default'].createElement(
   _reactRouter.Route,
   { component: _componentsAppJsx2['default'], history: history, path: '/' },
-  _react2['default'].createElement(_reactRouter.IndexRoute, { component: _componentsHomeJsx2['default'] })
+  _react2['default'].createElement(_reactRouter.IndexRoute, { component: _componentsIntroJsx2['default'] }),
+  _react2['default'].createElement(_reactRouter.Route, { component: _componentsSelectLocationJsx2['default'], path: '/select-location' }),
+  _react2['default'].createElement(_reactRouter.Route, { component: _componentsMapJsx2['default'], path: '/map' })
 );
 module.exports = exports['default'];
 
-},{"./components/App.jsx":215,"./components/Home.jsx":216,"./components/LocalStorage.jsx":217,"react":213,"react-router":80}]},{},[218]);
+},{"./components/App.jsx":215,"./components/Home.jsx":217,"./components/Intro.jsx":218,"./components/Map.jsx":219,"./components/SelectLocation.jsx":220,"react":213,"react-router":80}]},{},[222]);
