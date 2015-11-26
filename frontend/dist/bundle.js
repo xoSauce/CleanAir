@@ -24169,6 +24169,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var React = require('react');
+var Link = require('react-router').Link;
 
 var Home = (function (_React$Component) {
   _inherits(Home, _React$Component);
@@ -24183,9 +24184,18 @@ var Home = (function (_React$Component) {
     key: 'render',
     value: function render() {
       return React.createElement(
-        'p',
+        'div',
         null,
-        'Child View 1'
+        React.createElement(
+          'p',
+          null,
+          'Child View 1'
+        ),
+        React.createElement(
+          Link,
+          { to: '/App' },
+          'blaah'
+        )
       );
     }
   }]);
@@ -24196,7 +24206,7 @@ var Home = (function (_React$Component) {
 exports['default'] = Home;
 module.exports = exports['default'];
 
-},{"react":213}],217:[function(require,module,exports){
+},{"react":213,"react-router":80}],217:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -24242,7 +24252,7 @@ var CleanAirApp = React.createClass({
   }
 });
 
-ReactDOM.render(React.createElement(CleanAirApp, null), document.getElementById('app'));
+module.exports = CleanAirApp;
 
 },{"react":213,"react-dom":58,"react-localstorage":60}],218:[function(require,module,exports){
 'use strict';
