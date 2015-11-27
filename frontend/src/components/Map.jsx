@@ -14,8 +14,8 @@ export default class Map extends React.Component {
     return (
       <div id="panel">
         <h1>MAP</h1>
-        <SideNav/>
         <GMaps/>
+        <SideNav/>
         {this.props.children}
       </div>
       )
