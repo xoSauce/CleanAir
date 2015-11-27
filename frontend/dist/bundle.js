@@ -24254,11 +24254,16 @@ var InfoModal = (function (_React$Component) {
   }
 
   _createClass(InfoModal, [{
+    key: 'close',
+    value: function close() {
+      this.props.history.replaceState(null, '/map');
+    }
+  }, {
     key: 'render',
     value: function render() {
       return React.createElement(
         'div',
-        { className: 'modal-wrapper' },
+        { className: 'modal-wrapper', onClick: this.close.bind(this) },
         React.createElement(
           'div',
           { className: 'modal-inner' },
@@ -24423,11 +24428,16 @@ var PropertyModal = (function (_React$Component) {
   }
 
   _createClass(PropertyModal, [{
+    key: 'close',
+    value: function close() {
+      this.props.history.replaceState(null, '/map');
+    }
+  }, {
     key: 'render',
     value: function render() {
       return React.createElement(
         'div',
-        { className: 'modal-wrapper' },
+        { className: 'modal-wrapper', onClick: this.close.bind(this) },
         React.createElement(
           'div',
           { className: 'modal-inner' },
@@ -24650,11 +24660,16 @@ var UserModal = (function (_React$Component) {
   }
 
   _createClass(UserModal, [{
+    key: 'close',
+    value: function close() {
+      this.props.history.replaceState(null, '/map');
+    }
+  }, {
     key: 'render',
     value: function render() {
       return React.createElement(
         'div',
-        { className: 'modal-wrapper' },
+        { className: 'modal-wrapper', onClick: this.close.bind(this) },
         React.createElement(
           'div',
           { className: 'modal-inner' },
