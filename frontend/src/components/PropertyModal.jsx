@@ -9,7 +9,7 @@ export default class PropertyModal extends React.Component {
       <div className="modal-wrapper">
         <div className="modal-inner">
           Property Modal
-          <Link to={"/map"}>Close</Link>
+          <Link id="close-property" to={"/map"}>Close</Link>
         </div>
       </div>
       )

@@ -9,7 +9,7 @@ export default class InfoModal extends React.Component {
       <div className="modal-wrapper">
         <div className="modal-inner">
           Info Modal
-          <Link to={"/map"}>Close</Link>
+          <Link id="close-info" to={"/map"}>Close</Link>
         </div>
       </div>
       )

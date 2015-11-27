@@ -9,7 +9,7 @@ export default class UserModal extends React.Component {
       <div className="modal-wrapper">
         <div className="modal-inner">
           User Modal
-          <Link to={"/map"}>Close</Link>
+          <Link id="close-user" to={"/map"}>Close</Link>
         </div>
       </div>
       )

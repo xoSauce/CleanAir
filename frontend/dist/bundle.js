@@ -24265,7 +24265,7 @@ var InfoModal = (function (_React$Component) {
           'Info Modal',
           React.createElement(
             Link,
-            { to: "/map" },
+            { id: 'close-info', to: "/map" },
             'Close'
           )
         )
@@ -24434,7 +24434,7 @@ var PropertyModal = (function (_React$Component) {
           'Property Modal',
           React.createElement(
             Link,
-            { to: "/map" },
+            { id: 'close-property', to: "/map" },
             'Close'
           )
         )
@@ -24603,7 +24603,7 @@ var SideNav = (function (_React$Component) {
           React.createElement('hr', null),
           React.createElement(
             Link,
-            { to: "/map" },
+            { className: 'btn btn-default featured-btn', to: "/map" },
             'Search'
           ),
           React.createElement(
@@ -24661,7 +24661,7 @@ var UserModal = (function (_React$Component) {
           'User Modal',
           React.createElement(
             Link,
-            { to: "/map" },
+            { id: 'close-user', to: "/map" },
             'Close'
           )
         )

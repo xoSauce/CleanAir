@@ -34,7 +34,7 @@ export default class SideNav extends React.Component {
             <Link to={'/map/user-modal'}>User information</Link>
           </div>
           <hr/>
-          <Link to={"/map"}>Search</Link>
+          <Link className="btn btn-default featured-btn" to={"/map"}>Search</Link>
           <div className="toggle-button" onClick={this.toggleShow.bind(this)}>{this.state.show? 'Close': 'Open'}</div>
         </div>
       </div>
