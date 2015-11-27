@@ -6,6 +6,10 @@ import SideNav from './SideNav.jsx';
 import GMaps from './GMaps.jsx';
 
 export default class Map extends React.Component {
+  constructor(){
+    super();
+    this.state = {'showSideNav': true};
+  }
   render(){
     return (
       <div id="panel">

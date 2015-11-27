@@ -79,8 +79,39 @@ label {
 
 #sidebar {
   position: fixed;
-  background-color: #CCC;
   width: 290px;
   top: 0;
   height: 100%;
+}
+.sidebar-body{
+  position: absolute;
+  background-color: #CCC;
+  transition: 1s;
+  height: 100%;
+}
+.sidebar-body.closed{
+  transform: translateX(-100%);
+}
+.toggle-button{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(100%, -50%);
+  background-color: red;
+}
+.modal-wrapper{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.5);
+}
+.modal-inner{
+  position: absolute;
+  left: calc(50% - 250px);
+  top: calc(50% - 250px);
+  height: 500px;
+  width: 500px;
+  background-color: white;
 }
