@@ -6,11 +6,10 @@ var Link = require('react-router').Link;
 export default class Intro extends React.Component {
   render(){
     return(
-      <div>
-        <h1>CleanAir</h1>
-        <h2>Getting Started</h2>
-        <p>This page will give lots of information about the site</p>
-        <Link className="button" role="button" to={'/select-location'}>Let's Go</Link>
+      <div id="intro">
+        <div id="product-logo"></div>
+        <p>This text will give a lot of information about the site</p>
+        <Link className="btn btn-default featured-btn" role="button" to={'/select-location'}>Let's Go</Link>
       </div>
     )
   }

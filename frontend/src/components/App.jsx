@@ -6,7 +6,7 @@ var App = React.createClass({
   render: function() {
     let {children} = this.props;
     return (
-      <div>nav and shit
+      <div>
         {children}
       </div>
     );

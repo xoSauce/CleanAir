@@ -6,7 +6,7 @@ var Link = require('react-router').Link;
 export default class SideNav extends React.Component {
   render(){
     return(
-      <div style={{width: '100px', position: 'absolute', left: 0, top: 0, height: window.height + 'px'}}>
+      <div id="sidebar">
         <h1>Search</h1>
         <label>Enter Postcode</label>
         <input type="text" placeholder="Enter Postcode"/>
@@ -22,7 +22,7 @@ export default class SideNav extends React.Component {
         </div>
         <hr/>
         <div>
-          <Link to="/map/user-modal">User information</Link>
+          <Link to={'/map/user-modal'}>User information</Link>
         </div>
         <hr/>
         <Link to={"/map"}>Search</Link>

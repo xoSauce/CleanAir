@@ -6,15 +6,12 @@ var Link = require('react-router').Link;
 export default class SelectLocation extends React.Component {
   render(){
     return (<div>
-      <h1>Search</h1>
-      <div style={{width: '500px', margin: 'auto'}}>
-        <div style={{width: '50%', float: 'left'}}>
-          <Link to="/map">Use Current Location</Link>
-        </div>
-        <div style={{width: '50%', float: 'left'}}>
-          <label>Enter Location:</label>
-          <input type="text" placeholder="Enter a PostCode"/>
-          <Link to="/map">Search</Link>
+      <div id="search">
+        <div id="searchbox">
+          <label>Search an area by specifying the postcode below</label>
+          <input type="text" className="form-control featured-input" placeholder="Postcode"/>
+          <Link className="btn btn-default featured-btn" role="button" to="/map">Use my current location</Link>
+          <Link className="btn btn-primary featured-btn" role="button" to="/map">Search</Link>
         </div>
       </div>
     </div>);

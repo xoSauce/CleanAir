@@ -8,7 +8,7 @@ import GMaps from './GMaps.jsx';
 export default class Map extends React.Component {
   render(){
     return (
-      <div>
+      <div id="panel">
         <h1>MAP</h1>
         <SideNav/>
         <GMaps/>
