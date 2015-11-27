@@ -19,9 +19,10 @@ Run `./cleanairenv/bin/pip install -r requirements.txt` to install dependencies 
 
 Edit `app.jsx` file to change the app, `require('')` some modules and elements.
 
+Pages/components are in `/components`.
+
 `gulp watch` to serve React app in development
 
 `gulp` runs the browserify task
 
-TODO: Add an asset pipelining possibly with SCSS and Bourbon or Bootstrap or Foundation.
-TODO: re-enable uglify for deployment
+We're using Bootstrap for styles.
