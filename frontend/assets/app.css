@@ -31,6 +31,8 @@ body {
   display: inline-block;
   background-image:url('../assets/images/logo.png');
   background-size: 437px 117px;
+  background-repeat: no-repeat;
+  padding-bottom: 8em;
 }
 
 .featured-btn {

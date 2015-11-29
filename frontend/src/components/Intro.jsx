@@ -8,7 +8,7 @@ export default class Intro extends React.Component {
     return(
       <div id="intro">
         <div id="product-logo"></div>
-        <p>This text will give a lot of information about the site</p>
+        <p>Live A Cleaner Life</p>
         <Link className="btn btn-default featured-btn" role="button" to={'/select-location'}>Let's Go</Link>
       </div>
     )
