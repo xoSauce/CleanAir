@@ -5,6 +5,9 @@ var Link = require('react-router').Link;
 
 export default class SelectLocation extends React.Component {
   render(){
+    if(this.props.location.length > 0){
+      this.props.history.replaceState(null, '/map');
+    }
     return (<div>
       <div id="search">
         <div id="searchbox">
