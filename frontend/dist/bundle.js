@@ -26021,20 +26021,33 @@ var App = _react2['default'].createClass({
   displayName: 'App',
 
   getInitialState: function getInitialState() {
-    if (window.localStorage.pollution == undefined) {
-      return {
-        pollution: []
-      };
+    var obj = {
+      pollution: [],
+      geolocation: {
+        postcode: null,
+        lat: null,
+        lon: null
+      }
+    };
+    if (window.localStorage.pollution != undefined) {
+      obj.pollution = JSON.parse(ls.pollution);
+    }
+    if (window.localStorage.geolocation != undefined) {
+      obj.geolocation = JSON.parse(ls.geolocation);
     }
 
-    return {
-      pollution: JSON.parse(ls.pollution)
-    };
+    return obj;
   },
   storePollution: function storePollution(err, data) {
     var someData = JSON.parse(data.text).slice(1, 200);
     this.setState({ pollution: someData, displayPollution: someData });
     ls.pollution = JSON.stringify(someData);
+  },
+  storeLocation: function storeLocation(data) {
+    //Data has the form
+    // {postcode,lat,lon}
+    this.setState({ geolocation: data });
+    ls.geolocation = JSON.stringify(data);
   },
   updateFilters: function updateFilters(options) {
     console.log(options);
@@ -26046,7 +26059,11 @@ var App = _react2['default'].createClass({
     }
     var _this = this;
     var children = _react2['default'].Children.map(this.props.children, function (child) {
-      return _react2['default'].cloneElement(child, { pollution: _this.state.pollution, updateFilters: _this.updateFilters });
+      return _react2['default'].cloneElement(child, {
+        pollution: _this.state.pollution,
+        geolocation: _this.state.geolocation,
+        storeLocation: _this.storeLocation,
+        updateFilters: _this.updateFilters });
     });
     return _react2['default'].createElement(
       'div',
@@ -26177,6 +26194,71 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var React = require('react');
+
+var GeoLocationButton = (function (_React$Component) {
+  _inherits(GeoLocationButton, _React$Component);
+
+  function GeoLocationButton(props) {
+    _classCallCheck(this, GeoLocationButton);
+
+    _get(Object.getPrototypeOf(GeoLocationButton.prototype), 'constructor', this).call(this, props);
+    this.state = { geolocation: navigator.geolocation };
+  }
+
+  _createClass(GeoLocationButton, [{
+    key: 'render',
+    value: function render() {
+      var button = this.state.geolocation ? React.createElement(
+        'div',
+        { className: 'btn btn-default featured-btn', role: 'button', to: '/map', onClick: this.getGeoLocation.bind(this) },
+        'Use my current location'
+      ) : '';
+      return React.createElement(
+        'span',
+        null,
+        button
+      );
+    }
+  }, {
+    key: 'getGeoLocation',
+    value: function getGeoLocation() {
+      var _this = this;
+      this.state.geolocation.getCurrentPosition(function (location) {
+        _this.props.storeLocation({
+          postcode: 'Current Location',
+          lat: location.coords.latitude,
+          lon: location.coords.longitude
+        });
+      }, function () {
+        return 0;
+      }, function () {
+        return { maximumAge: 5 * 60 * 1000 };
+      });
+    }
+  }]);
+
+  return GeoLocationButton;
+})(React.Component);
+
+exports['default'] = GeoLocationButton;
+module.exports = exports['default'];
+
+},{"react":232}],237:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var React = require('react');
 var Link = require('react-router').Link;
 
 var Home = (function (_React$Component) {
@@ -26214,7 +26296,7 @@ var Home = (function (_React$Component) {
 exports['default'] = Home;
 module.exports = exports['default'];
 
-},{"react":232,"react-router":99}],237:[function(require,module,exports){
+},{"react":232,"react-router":99}],238:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -26272,7 +26354,7 @@ var InfoModal = (function (_React$Component) {
 exports['default'] = InfoModal;
 module.exports = exports['default'];
 
-},{"react":232,"react-router":99}],238:[function(require,module,exports){
+},{"react":232,"react-router":99}],239:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -26293,18 +26375,18 @@ var Link = require('react-router').Link;
 var Intro = (function (_React$Component) {
   _inherits(Intro, _React$Component);
 
-  function Intro() {
+  function Intro(props) {
     _classCallCheck(this, Intro);
 
-    _get(Object.getPrototypeOf(Intro.prototype), 'constructor', this).apply(this, arguments);
+    _get(Object.getPrototypeOf(Intro.prototype), 'constructor', this).call(this, props);
+    if (this.props.pollution.length > 0) {
+      this.props.history.replaceState(null, '/select-location');
+    }
   }
 
   _createClass(Intro, [{
     key: 'render',
     value: function render() {
-      if (this.props.pollution.length > 0) {
-        this.props.history.replaceState(null, '/map');
-      }
       return React.createElement(
         'div',
         { id: 'intro' },
@@ -26329,7 +26411,7 @@ var Intro = (function (_React$Component) {
 exports['default'] = Intro;
 module.exports = exports['default'];
 
-},{"react":232,"react-router":99}],239:[function(require,module,exports){
+},{"react":232,"react-router":99}],240:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -26378,8 +26460,8 @@ var Map = (function (_React$Component) {
           null,
           'MAP'
         ),
-        React.createElement(_GMapsJsx2['default'], null),
-        React.createElement(_SideNavJsx2['default'], null),
+        React.createElement(_GMapsJsx2['default'], { geolocation: this.props.geolocation, pollution: this.props.pollution }),
+        React.createElement(_SideNavJsx2['default'], { geolocation: this.props.geolocation, pollution: this.props.pollution, storeLocation: this.props.storeLocation }),
         this.props.children
       );
     }
@@ -26391,7 +26473,7 @@ var Map = (function (_React$Component) {
 exports['default'] = Map;
 module.exports = exports['default'];
 
-},{"./GMaps.jsx":235,"./SideNav.jsx":242,"react":232,"react-router":99}],240:[function(require,module,exports){
+},{"./GMaps.jsx":235,"./SideNav.jsx":243,"react":232,"react-router":99}],241:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -26449,7 +26531,7 @@ var PropertyModal = (function (_React$Component) {
 exports['default'] = PropertyModal;
 module.exports = exports['default'];
 
-},{"react":232,"react-router":99}],241:[function(require,module,exports){
+},{"react":232,"react-router":99}],242:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -26460,9 +26542,15 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _GeoLocationButtonJsx = require('./GeoLocationButton.jsx');
+
+var _GeoLocationButtonJsx2 = _interopRequireDefault(_GeoLocationButtonJsx);
 
 var React = require('react');
 var Link = require('react-router').Link;
@@ -26470,18 +26558,25 @@ var Link = require('react-router').Link;
 var SelectLocation = (function (_React$Component) {
   _inherits(SelectLocation, _React$Component);
 
-  function SelectLocation() {
+  function SelectLocation(props) {
     _classCallCheck(this, SelectLocation);
 
-    _get(Object.getPrototypeOf(SelectLocation.prototype), 'constructor', this).apply(this, arguments);
+    _get(Object.getPrototypeOf(SelectLocation.prototype), 'constructor', this).call(this, props);
+    if (this.props.geolocation.postcode != null) {
+      this.props.history.replaceState(null, '/map');
+    }
   }
 
   _createClass(SelectLocation, [{
-    key: 'render',
-    value: function render() {
-      if (this.props.location.length > 0) {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      if (this.props.geolocation.postcode != null) {
         this.props.history.replaceState(null, '/map');
       }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
       return React.createElement(
         'div',
         null,
@@ -26496,12 +26591,8 @@ var SelectLocation = (function (_React$Component) {
               null,
               'Search an area by specifying the postcode below'
             ),
-            React.createElement('input', { type: 'text', className: 'form-control featured-input', placeholder: 'Postcode' }),
-            React.createElement(
-              Link,
-              { className: 'btn btn-default featured-btn', role: 'button', to: '/map' },
-              'Use my current location'
-            ),
+            React.createElement('input', { type: 'text', className: 'form-control featured-input', placeholder: 'Postcode', value: this.props.geolocation.postcode ? this.props.geolocation.postcode : '', onChange: this.updateLocation.bind(this) }),
+            React.createElement(_GeoLocationButtonJsx2['default'], { storeLocation: this.props.storeLocation }),
             React.createElement(
               Link,
               { className: 'btn btn-primary featured-btn', role: 'button', to: '/map' },
@@ -26511,6 +26602,11 @@ var SelectLocation = (function (_React$Component) {
         )
       );
     }
+  }, {
+    key: 'updateLocation',
+    value: function updateLocation(event) {
+      console.log(event.target.value);
+    }
   }]);
 
   return SelectLocation;
@@ -26519,7 +26615,7 @@ var SelectLocation = (function (_React$Component) {
 exports['default'] = SelectLocation;
 module.exports = exports['default'];
 
-},{"react":232,"react-router":99}],242:[function(require,module,exports){
+},{"./GeoLocationButton.jsx":236,"react":232,"react-router":99}],243:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -26530,9 +26626,15 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _GeoLocationButtonJsx = require('./GeoLocationButton.jsx');
+
+var _GeoLocationButtonJsx2 = _interopRequireDefault(_GeoLocationButtonJsx);
 
 var React = require('react');
 var Link = require('react-router').Link;
@@ -26569,16 +26671,11 @@ var SideNav = (function (_React$Component) {
           React.createElement(
             'label',
             null,
-            'Enter Postcode'
+            'Enter Location'
           ),
-          React.createElement('input', { type: 'text', placeholder: 'Enter Postcode' }),
+          React.createElement('input', { type: 'text', placeholder: 'Enter Location', value: this.props.geolocation.postcode ? this.props.geolocation.postcode : '' }),
           React.createElement('hr', null),
-          React.createElement(
-            'label',
-            null,
-            'Use current location'
-          ),
-          React.createElement('input', { type: 'checkbox' }),
+          React.createElement(_GeoLocationButtonJsx2['default'], { storeLocation: this.props.storeLocation }),
           React.createElement('hr', null),
           React.createElement(
             'div',
@@ -26626,7 +26723,7 @@ var SideNav = (function (_React$Component) {
 exports['default'] = SideNav;
 module.exports = exports['default'];
 
-},{"react":232,"react-router":99}],243:[function(require,module,exports){
+},{"./GeoLocationButton.jsx":236,"react":232,"react-router":99}],244:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -26684,7 +26781,7 @@ var UserModal = (function (_React$Component) {
 exports['default'] = UserModal;
 module.exports = exports['default'];
 
-},{"react":232,"react-router":99}],244:[function(require,module,exports){
+},{"react":232,"react-router":99}],245:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -26712,7 +26809,7 @@ _reactDom2['default'].render(_react2['default'].createElement(
   _routesJsx2['default']
 ), document.getElementById('app'));
 
-},{"./routes.jsx":245,"history":46,"react":232,"react-dom":66,"react-router":99}],245:[function(require,module,exports){
+},{"./routes.jsx":246,"history":46,"react":232,"react-dom":66,"react-router":99}],246:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -26774,4 +26871,4 @@ exports['default'] = _react2['default'].createElement(
 );
 module.exports = exports['default'];
 
-},{"./components/App.jsx":234,"./components/Home.jsx":236,"./components/InfoModal.jsx":237,"./components/Intro.jsx":238,"./components/Map.jsx":239,"./components/PropertyModal.jsx":240,"./components/SelectLocation.jsx":241,"./components/UserModal.jsx":243,"react":232,"react-router":99}]},{},[244]);
+},{"./components/App.jsx":234,"./components/Home.jsx":237,"./components/InfoModal.jsx":238,"./components/Intro.jsx":239,"./components/Map.jsx":240,"./components/PropertyModal.jsx":241,"./components/SelectLocation.jsx":242,"./components/UserModal.jsx":244,"react":232,"react-router":99}]},{},[245]);

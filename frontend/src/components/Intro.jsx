@@ -4,10 +4,13 @@ var React = require('react');
 var Link = require('react-router').Link;
 
 export default class Intro extends React.Component {
-  render(){
+  constructor(props){
+    super(props);
     if(this.props.pollution.length > 0){
       this.props.history.replaceState(null, '/select-location');
     }
+  }
+  render(){
     return(
       <div id="intro">
         <div id="product-logo"></div>
