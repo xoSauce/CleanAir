@@ -10,6 +10,11 @@ export default class Intro extends React.Component {
       this.props.history.replaceState(null, '/select-location');
     }
   }
+  componentDidUpdate(){
+    if(this.props.pollution.length > 0){
+      this.props.history.replaceState(null, '/select-location');
+    }
+  }
   render(){
     return(
       <div id="intro">

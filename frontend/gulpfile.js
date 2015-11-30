@@ -23,7 +23,7 @@ gulp.task('browserify', function () {
             console.error(err.message);
         })
         .pipe(source('bundle.js'))
-        // .pipe(streamify(uglify('./dist/')))
+        .pipe(streamify(uglify('./dist/')))
         .pipe(gulp.dest('./dist/'))
         .pipe(notify("Built Bundle"));
 });
