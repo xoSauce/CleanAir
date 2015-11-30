@@ -36,6 +36,5 @@ gulp.task('watch', function () {
             livereload: true,
         }));
     gulp.start('default');
-    gulp.watch('src/*.jsx', ['default']);
-    gulp.watch('src/*.jsx', ['default']);
+    gulp.watch('./src/**/*.jsx', ['default']);
 });

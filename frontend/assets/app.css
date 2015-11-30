@@ -1,0 +1,119 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900);
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 18pt !important;
+}
+
+#wrapper {
+  text-align: center;
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-image: url('../assets/images/background.JPG');
+  background-size: cover;
+  background-position: center bottom;
+}
+
+#intro {
+  position: absolute;
+  left: 0; top: 50%;
+  height: 250px;
+  width: 100%;
+  margin-top: -125px;
+  z-index: 1;
+  color: white;
+}
+
+#product-logo {
+  width: 437px; height: 117px;
+  display: inline-block;
+  background-image:url('../assets/images/logo.png');
+  background-size: 437px 117px;
+  background-repeat: no-repeat;
+  padding-bottom: 8em;
+}
+
+.featured-btn {
+  text-transform: uppercase !important;
+  letter-spacing: 3px;
+  padding-right: 12px !important;
+  font-weight: 700 !important;
+  margin: 10px 5px;
+}
+
+#search {
+  position: absolute;
+  left: 0; top: 0;
+  height: 100%; width: 100%;
+  background-color: white;
+}
+
+.featured-input {
+  height: 100px !important;
+  font-size: 60px !important;
+  font-weight: 300 !important;
+  text-align: center;
+  margin: 10px 0px 0px 0px;
+}
+
+#searchbox {
+  position: relative;
+  text-align: center;
+  top: 50%;
+  left: 20%;
+  width: 60%;
+  height: 210px;
+  margin-top: -105px;
+}
+
+label {
+  font-weight: 400 !important;
+}
+
+#panel {
+  position: absolute;
+  width: 100%; height: 100%;
+  top: 0; left: 0;
+  background-color: #fff;
+}
+
+#sidebar {
+  position: fixed;
+  width: 290px;
+  top: 0;
+  height: 100%;
+}
+.sidebar-body{
+  position: absolute;
+  background-color: #CCC;
+  transition: 1s;
+  height: 100%;
+}
+.sidebar-body.closed{
+  transform: translateX(-100%);
+}
+.toggle-button{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(100%, -50%);
+  background-color: red;
+}
+.modal-wrapper{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.5);
+}
+.modal-inner{
+  position: absolute;
+  left: calc(50% - 250px);
+  top: calc(50% - 250px);
+  height: 500px;
+  width: 500px;
+  background-color: white;
+}

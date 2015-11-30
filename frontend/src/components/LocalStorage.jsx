@@ -25,7 +25,4 @@ var CleanAirApp = React.createClass({
   }
 });
 
-ReactDOM.render(
-  <CleanAirApp/>,
-  document.getElementById('app')
-);
+module.exports = CleanAirApp

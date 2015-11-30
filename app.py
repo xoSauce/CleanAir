@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, send_from_directory
 from decimal import *
 import json
 import awsdb
@@ -13,6 +13,10 @@ def hello():
 @app.route("/dist/bundle.js")
 def react_app():    
     return open('./frontend/dist/bundle.js').read()
+
+@app.route("/assets/<path:path>")
+def assets(path):
+  return send_from_directory('./frontend/assets', path)
 
 def json_date_handler(obj):
     """JSON serializer for objects not serializable by default json code"""
