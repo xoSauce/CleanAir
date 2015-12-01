@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-var Ajax = require('react-ajax');
 const ls = window.localStorage
 
 function ajax(url, cb){
