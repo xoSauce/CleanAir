@@ -65,7 +65,7 @@ var App = React.createClass({
   storeLocationProperties: function(data){
     console.log(data);
     this.setState({locationProperties: data});
-    ls.locationProperties = JSON.stringify(data);
+    // ls.locationProperties = JSON.stringify(data);
   },
   storeLondonProperties: function(data){
     this.setState({londonProperties: data});
