@@ -162,7 +162,7 @@ label {
   color: #2B8A77;
   letter-spacing: 2px;
 }
-<<<<<<< Updated upstream
+
 .floating-button{
   position: absolute;
   top: 10px;
@@ -173,7 +173,6 @@ label {
   border-radius: 999px;
   padding: 10px 23px;
 }
-=======
 
 .sidebar-green {	
   background-color: #C4E9E2;
@@ -192,4 +191,4 @@ label {
 .searchgrid-btn {
   width: 100%; 
 }
->>>>>>> Stashed changes
+
