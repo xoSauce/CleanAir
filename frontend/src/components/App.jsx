@@ -51,7 +51,7 @@ var App = React.createClass({
     return obj;
   },
   storePollution: function(data){
-    var someData = data.slice(1,200);
+    var someData = data.slice(1,100);
     this.setState({pollution: data, displayPollution: data});
     ls.pollution = JSON.stringify(data);
   },
