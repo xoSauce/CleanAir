@@ -3,11 +3,13 @@
 var React = require('react');
 var Link = require('react-router').Link;
 import GeoLocationButton from './GeoLocationButton.jsx';
+import LocationField from './LocationField.jsx';
+
 
 export default class SideNav extends React.Component {
-  constructor(){
-    super();
-    this.state = {show: true};
+  constructor(props){
+    super(props);
+    this.state = {show: true, showCurrentLocation: true};
   }
   toggleShow(){
     this.setState({show: !this.state.show});
@@ -19,9 +21,9 @@ export default class SideNav extends React.Component {
         <div className={["sidebar-body", (this.state.show?'open':'closed')].join(" ")}>
           <h1>Search</h1>
           <label>Enter Location</label>
-          <input type="text" placeholder="Enter Location" value={(this.props.geolocation.postcode)? this.props.geolocation.postcode : ''}/>
+          <LocationField currentLocation={this.state.showCurrentLocation}/>
           <hr/>
-          <GeoLocationButton storeLocation={this.props.storeLocation}/>
+          <GeoLocationButton text={this.props.geolocation.postcode} storeLocation={this.props.storeLocation}/>
           <hr/>
           <div>
             <Link to={'/map/property-modal'}>Property Search Edit</Link>
