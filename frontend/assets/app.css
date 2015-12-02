@@ -81,6 +81,11 @@ label {
   font-weight: 400 !important;
 }
 
+#map {
+  width: 100%;
+  height: 100%;
+}
+
 #panel {
   position: absolute;
   width: 100%; height: 100%;
@@ -108,7 +113,6 @@ label {
   transform: translateX(-100%);
 }
 .toggle-button{
-  cursor: pointer;
   position: absolute;
   top: 50%;
   right: 0;
@@ -142,7 +146,7 @@ label {
   position: absolute;
   left: calc(50% - 250px);
   top: calc(50% - 250px);
-  min-height: 500px;
+  height: 500px;
   width: 500px;
   background-color: white;
 }
@@ -154,7 +158,8 @@ label {
   border-radius: 5px;
   margin: 8px;
   padding: 10px;
-  height: auto;
+  height: 200px;
+  background-color: #C4E9E2;
   text-align: left;
   text-transform: uppercase;
   font-size: 0.5em;
@@ -162,33 +167,3 @@ label {
   color: #2B8A77;
   letter-spacing: 2px;
 }
-
-.floating-button{
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  z-index: 99;
-  background-color: red;
-  color: white;
-  border-radius: 999px;
-  padding: 10px 23px;
-}
-
-.sidebar-green {	
-  background-color: #C4E9E2;
-  color: #2B8A77;
-}
-
-.sidebar-grey {
-  background-color: #DDD;
-  color: #666;
-}
-
-.sidebar-grey .btn {
-  margin-top: 10px;
-}
-
-.searchgrid-btn {
-  width: 100%; 
-}
-
