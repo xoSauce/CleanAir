@@ -19,9 +19,14 @@ export default class SideNav extends React.Component {
       <div id="sidebar">
 
         <div className={["sidebar-body", (this.state.show?'open':'closed')].join(" ")}>
-          <h1>Search</h1>
+          <div className={"sidebar-grid"}>
+            Search <i className={"icon-search"}></i>
+          </div>
           <label>Enter Location</label>
-          <LocationField currentLocation={this.state.showCurrentLocation}/>
+          <LocationField 
+            storeLocation={this.props.storeLocation} 
+            geolocation={this.props.geolocation}
+            currentLocation={this.state.showCurrentLocation}/>
           <hr/>
           <GeoLocationButton text={this.props.geolocation.postcode} storeLocation={this.props.storeLocation}/>
           <hr/>
@@ -37,7 +42,7 @@ export default class SideNav extends React.Component {
           </div>
           <hr/>
           <Link className="btn btn-default featured-btn" to={"/map"}>Search</Link>
-          <div className="toggle-button" onClick={this.toggleShow.bind(this)}>{this.state.show? 'Close': 'Open'}</div>
+          <div className="toggle-button" onClick={this.toggleShow.bind(this)}>{this.state.show? <i className={"icon-chevron-left"}></i>: <i className={"icon-chevron-right"}></i>}</div>
         </div>
       </div>
       )

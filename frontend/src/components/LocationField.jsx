@@ -8,16 +8,30 @@ export default class LocationField extends React.Component {
     super(props);
     this.state = {currentLocation: true}
   }
-  change(event){
-    event.target.select();
+  change(){
+    document.getElementsByClassName('geosuggest__input')[0].select();
   }
   setFalse(){
     this.setState({currentLocation: false});
   }
+  componentDidUpdate(){
+    if(!this.state.currentLocation)
+    {
+      //auto select on re-render
+      document.getElementsByClassName('geosuggest__input')[0].select();
+    }
+  }
+  locationSelected(suggest){
+    var data = {
+      postcode: suggest.label,
+      lat: suggest.location.lat,
+      lon: suggest.location.lng
+    }
+    this.props.storeLocation(data);
+  }
   render(){
-    var obj = (this.state.currentLocation)? <input onChange={this.setFalse.bind(this)} onClick={this.change.bind(this)} value="Current Location"/> : <Geosuggest country="gb"/>
     return (
-      <span>{obj}</span>
+      <div><Geosuggest id="geo" country="gb" onFocus={this.change.bind(this)} onSuggestSelect={this.locationSelected.bind(this)} initialValue={this.props.geolocation.postcode}/></div>
       )
   }
 }

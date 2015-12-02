@@ -13,7 +13,7 @@ export default class Map extends React.Component {
   render(){
     return (
       <div id="panel">
-        <h1>MAP</h1>
+        <div id="panel-logo"></div>
         <GMaps geolocation={this.props.geolocation} pollution={this.props.pollution}/>
         <SideNav geolocation={this.props.geolocation} pollution={this.props.pollution} storeLocation={this.props.storeLocation}/>
         {this.props.children}
