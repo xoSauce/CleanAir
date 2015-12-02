@@ -21,7 +21,10 @@ export default class SideNav extends React.Component {
         <div className={["sidebar-body", (this.state.show?'open':'closed')].join(" ")}>
           <h1>Search</h1>
           <label>Enter Location</label>
-          <LocationField currentLocation={this.state.showCurrentLocation}/>
+          <LocationField 
+            storeLocation={this.props.storeLocation} 
+            geolocation={this.props.geolocation}
+            currentLocation={this.state.showCurrentLocation}/>
           <hr/>
           <GeoLocationButton text={this.props.geolocation.postcode} storeLocation={this.props.storeLocation}/>
           <hr/>
