@@ -111,7 +111,7 @@ def get_property_listings_with_params(lat, longi):
     'latitude=' + lat,
     'longitude=' + longi,
     'api_key=nkqx8hj64jsugpzuzcukb9tw',
-    'page_size=25',
+    'page_size=50',
     'summarised=true'
     ]
     param_string = "&".join(params)
@@ -128,11 +128,14 @@ def get_property_listings():
         params = [
         'area=London',
         'api_key=nkqx8hj64jsugpzuzcukb9tw',
-        'page_size=25',
+        'page_size=50',
         'summarised=true'
         ]
         param_string = "&".join(params)
         listings = json.loads(urllib2.urlopen("http://api.zoopla.co.uk/api/v1/property_listings.json?" + param_string).read())['listing']
+        filtered_listings = []
+        for l in listings:
+
         # Timeout is in seconds, set timeout for 30 minutes
         cache.set('listings', listings, timeout= 60*30)
     #indent/separators are for debugging/prettyprinting purposes

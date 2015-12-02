@@ -52,7 +52,7 @@ var App = React.createClass({
     return obj;
   },
   storePollution: function(data){
-    var someData = data.slice(1,100);
+    var data = data.slice(1,300);
     this.setState({pollution: data, displayPollution: data});
     ls.pollution = JSON.stringify(data);
   },
