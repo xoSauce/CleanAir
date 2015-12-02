@@ -38,7 +38,7 @@ def get_pollution_data():
     count = 0
     for r in result:
         if r.get('lat') == None or r.get('long') == None:    
-            if count == 9:
+            if count == 5:
                 time.sleep(1)
                 count = 0
             link = base_link + r['location'] + '&key=' + key
@@ -88,7 +88,10 @@ def get_traffic_data_with_param(lat, longi):
 def get_traffic_data():
     print "Requesting pollution data"
     cnx = awsdb.connect();
-    result = awsdb.query(cnx, "SELECT * FROM traffic_london");
+    result = awsdb.query(cnx, "SELECT Longitude, Latitude, CAST(1 * SUM(AllMotorVehicles) / count(*) as Decimal(10,6)) as idx FROM traffic_london GROUP BY Longitude, Latitude;");
+    for r in result:
+        r['idx'] = float(r['idx'])
+    print result
     awsdb.close(cnx);
     response = json.dumps(result, default=json_date_handler)
     return response
