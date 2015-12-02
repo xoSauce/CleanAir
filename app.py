@@ -12,11 +12,6 @@ cache = SimpleCache()
 @app.route("/")
 def hello():
     return render_template('index.html')
-    # return render_template('./../frontend/index.html')
-
-@app.route("/dist/bundle.js")
-def react_app():    
-    return open('./frontend/dist/bundle.js').read()
 
 @app.route("/assets/<path:path>")
 def assets(path):
