@@ -17,7 +17,7 @@ export default class SelectLocation extends React.Component {
             <label>Search an area by specifying the postcode below</label>
           </div>
           <div className="col-sm-6">
-            <GeoLocationButton storeLocation={this.props.storeLocation} geolocation={this.props.geolocation}/>
+            <GeoLocationButton history={this.props.history} storeLocation={this.props.storeLocation} geolocation={this.props.geolocation}/>
           </div>
           <div className="col-sm-6">
             <div className="row"><LocationField currentLocation={true} geolocation={this.props.geolocation} storeLocation={this.props.storeLocation}/></div>
