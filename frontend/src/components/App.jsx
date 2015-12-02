@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 const ls = window.localStorage
 
 function ajax(url, cb){
+  url = "http://ca.jedge.co.uk" + url;
   var r = new XMLHttpRequest();
   r.open("GET", url, true);
   r.onreadystatechange = function () {
