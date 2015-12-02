@@ -35,6 +35,15 @@ body {
   padding-bottom: 8em;
 }
 
+#panel-logo {
+  width: 145px; height: 38px;
+  display: inline-block;
+  background-image:url('../assets/images/logo.png');
+  background-size: 145px 38px;
+  margin: 10px;
+  background-repeat: no-repeat;
+}
+
 .featured-btn {
   text-transform: uppercase !important;
   letter-spacing: 3px;
@@ -76,20 +85,24 @@ label {
   position: absolute;
   width: 100%; height: 100%;
   top: 0; left: 0;
-  background-color: #fff;
+  background-color: #18bc9c;
 }
 
 #sidebar {
   position: fixed;
-  width: 290px;
+  width: 285px;
   top: 0;
   height: 100%;
 }
 .sidebar-body{
+  width: inherit;
   position: absolute;
-  background-color: #CCC;
+  background-color: #FFF;
   transition: 1s;
   height: 100%;
+  -webkit-box-shadow: 13px 17px 49px -12px rgba(0,0,0,0.5);
+  -moz-box-shadow: 13px 17px 49px -12px rgba(0,0,0,0.5);
+  box-shadow: 13px 17px 49px -12px rgba(0,0,0,0.5);
 }
 .sidebar-body.closed{
   transform: translateX(-100%);
@@ -98,9 +111,23 @@ label {
   position: absolute;
   top: 50%;
   right: 0;
-  transform: translate(100%, -50%);
-  background-color: red;
+  transform: translate(100%);
+  background-color: #18bc9c;
+  color: white;
+  width: 30px; height: 100px;
+  margin-top: -50px;
+  -webkit-box-shadow: 13px 17px 49px -12px rgba(0,0,0,0.5);
+  -moz-box-shadow: 13px 17px 49px -12px rgba(0,0,0,0.5);
+  box-shadow: 13px 17px 49px -12px rgba(0,0,0,0.5);
+  -webkit-border-top-right-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -moz-border-radius-bottomright: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  line-height: 100px;
 }
+
 .modal-wrapper{
   position: absolute;
   top:0;
@@ -109,6 +136,7 @@ label {
   height: 100%;
   background-color: rgba(0,0,0,.5);
 }
+
 .modal-inner{
   position: absolute;
   left: calc(50% - 250px);
@@ -116,4 +144,21 @@ label {
   height: 500px;
   width: 500px;
   background-color: white;
+}
+
+.sidebar-grid {
+  width: 270px; 
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin: 8px;
+  padding: 10px;
+  height: 200px;
+  background-color: #C4E9E2;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 0.5em;
+  font-weight: 900;
+  color: #2B8A77;
+  letter-spacing: 2px;
 }
