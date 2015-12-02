@@ -53,7 +53,6 @@ componentDidMount(){
 	        location: new google.maps.LatLng(lat, lng),
 	        weight: Idx
      	 });
-
     };
 
  
