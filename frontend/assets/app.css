@@ -5,7 +5,10 @@ body {
     font-weight: 300;
     font-size: 18pt !important;
 }
-
+#map{
+  height: 100%;
+  width: 100%;
+}
 #wrapper {
   text-align: center;
   position: absolute;
