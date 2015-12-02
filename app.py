@@ -34,22 +34,21 @@ def get_pollution_data():
     result = awsdb.query(cnx, "SELECT * FROM pollution_table");
     base_link = 'https://maps.googleapis.com/maps/api/geocode/json?address='
     key = 'AIzaSyBbdn_tU8e6j06yjKK8_mAXqlZoTwQH08w'
-    print 'Here'
     count = 0
-    for r in result:
-        if r.get('lat') == None or r.get('long') == None:    
-            if count == 9:
-                time.sleep(1)
-                count = 0
-            link = base_link + r['location'] + '&key=' + key
-            gmaps_result = requests.get(link).json()
-            print gmaps_result
-            lat = gmaps_result['results'][0]['geometry']['location']['lat']
-            longi = gmaps_result['results'][0]['geometry']['location']['lng']
-            awsdb.mutate(cnx, "UPDATE pollution_table pt SET pt.lat = %s, pt.long = %s WHERE pt.id=%s;", param=[lat, longi, r.get('id')])
-            r['lat'] = lat
-            r['long'] = longi
-            count += 1
+    # for r in result:
+    #     if r.get('lat') == None or r.get('long') == None:    
+    #         if count == 9:
+    #             time.sleep(1)
+    #             count = 0
+    #         link = base_link + r['location'] + '&key=' + key
+    #         gmaps_result = requests.get(link).json()
+    #         print gmaps_result
+    #         lat = gmaps_result['results'][0]['geometry']['location']['lat']
+    #         longi = gmaps_result['results'][0]['geometry']['location']['lng']
+    #         awsdb.mutate(cnx, "UPDATE pollution_table pt SET pt.lat = %s, pt.long = %s WHERE pt.id=%s;", param=[lat, longi, r.get('id')])
+    #         r['lat'] = lat
+    #         r['long'] = longi
+    #         count += 1
     awsdb.close(cnx);
     response = json.dumps(result, default=json_date_handler)
 
