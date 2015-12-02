@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 const ls = window.localStorage
 
 function ajax(url, cb){
+  url = "http://ca.jedge.co.uk" + url;
   var r = new XMLHttpRequest();
   r.open("GET", url, true);
   r.onreadystatechange = function () {
@@ -51,7 +52,7 @@ var App = React.createClass({
     return obj;
   },
   storePollution: function(data){
-    var someData = data.slice(1,100);
+    var data = data.slice(1,300);
     this.setState({pollution: data, displayPollution: data});
     ls.pollution = JSON.stringify(data);
   },
@@ -79,7 +80,8 @@ var App = React.createClass({
     var children = React.Children.map(this.props.children, function(child) {
         return React.cloneElement(child, { 
           pollution: _this.state.pollution, 
-          geolocation: _this.state.geolocation, 
+          geolocation: _this.state.geolocation,
+          londonProperties: _this.state.londonProperties,
           storeLocation: _this.storeLocation, 
           updateFilters: _this.updateFilters });
     });

@@ -30,29 +30,34 @@ def json_date_handler(obj):
 @app.route("/req/db/pollution_data", methods=['GET'])
 def get_pollution_data():
     print "Requesting pollution data"
-    cnx = awsdb.connect();
-    result = awsdb.query(cnx, "SELECT * FROM pollution_table");
-    base_link = 'https://maps.googleapis.com/maps/api/geocode/json?address='
-    key = 'AIzaSyBbdn_tU8e6j06yjKK8_mAXqlZoTwQH08w'
-    count = 0
+    pollution_data = cache.get('pollution_data')
+    if pollution_data is None:
+        cnx = awsdb.connect();
+        result = awsdb.query(cnx, "SELECT * FROM pollution_table");
+        base_link = 'https://maps.googleapis.com/maps/api/geocode/json?address='
+        key = 'AIzaSyBbdn_tU8e6j06yjKK8_mAXqlZoTwQH08w'
+        count = 0
 
-    for r in result:
-        if r.get('lat') == None or r.get('long') == None:    
-            if count == 5:
-                time.sleep(1)
-                count = 0
-            link = base_link + r['location'] + '&key=' + key
-            gmaps_result = requests.get(link).json()
-            print gmaps_result
-            lat = gmaps_result['results'][0]['geometry']['location']['lat']
-            longi = gmaps_result['results'][0]['geometry']['location']['lng']
-            awsdb.mutate(cnx, "UPDATE pollution_table pt SET pt.lat = %s, pt.long = %s WHERE pt.id=%s;", param=[lat, longi, r.get('id')])
-            r['lat'] = lat
-            r['long'] = longi
-            count += 1
+        # for r in result:
+        #     if r.get('lat') == None or r.get('long') == None:    
+        #         if count == 5:
+        #             time.sleep(1)
+        #             count = 0
+        #         link = base_link + r['location'] + '&key=' + key
+        #         gmaps_result = requests.get(link).json()
+        #         print gmaps_result
+        #         lat = gmaps_result['results'][0]['geometry']['location']['lat']
+        #         longi = gmaps_result['results'][0]['geometry']['location']['lng']
+        #         awsdb.mutate(cnx, "UPDATE pollution_table pt SET pt.lat = %s, pt.long = %s WHERE pt.id=%s;", param=[lat, longi, r.get('id')])
+        #         r['lat'] = lat
+        #         r['long'] = longi
+        #         count += 1
 
-    awsdb.close(cnx);
-    response = json.dumps(result, default=json_date_handler)
+        awsdb.close(cnx);
+        response = json.dumps(result, default=json_date_handler)
+        cache.set('pollution_data', response)
+    else:
+        response = pollution_data
 
     return response
 
@@ -123,11 +128,14 @@ def get_property_listings():
         params = [
         'area=London',
         'api_key=nkqx8hj64jsugpzuzcukb9tw',
-        'page_size=100',
+        'page_size=50',
         'summarised=true'
         ]
         param_string = "&".join(params)
         listings = json.loads(urllib2.urlopen("http://api.zoopla.co.uk/api/v1/property_listings.json?" + param_string).read())['listing']
+        filtered_listings = []
+        for l in listings:
+
         # Timeout is in seconds, set timeout for 30 minutes
         cache.set('listings', listings, timeout= 60*30)
     #indent/separators are for debugging/prettyprinting purposes
