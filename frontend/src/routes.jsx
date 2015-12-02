@@ -10,6 +10,7 @@ import Map from './components/Map.jsx';
 import PropertyModal from './components/PropertyModal.jsx';
 import UserModal from './components/UserModal.jsx';
 import InfoModal from './components/InfoModal.jsx';
+import WarningModal from './components/WarningModal.jsx';
 
 export default (
     <Route component={App} history={history} path="/">
@@ -19,6 +20,7 @@ export default (
         <Route component={UserModal} path="/map/user-modal"/>
         <Route component={PropertyModal} path="/map/property-modal"/>
         <Route component={InfoModal} path="/map/info-modal"/>
+        <Route component={WarningModal} path="/map/warning-modal"/>
       </Route>
 
     </Route>
