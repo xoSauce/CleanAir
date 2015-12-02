@@ -37,5 +37,4 @@ gulp.task('watch', function () {
         }));
     gulp.start('default');
     gulp.watch('./src/**/*.jsx', ['default']);
-    gulp.watch('./assets/**/*.css', ['default']);
-});
+  });
