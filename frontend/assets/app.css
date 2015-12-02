@@ -154,8 +154,7 @@ label {
   border-radius: 5px;
   margin: 8px;
   padding: 10px;
-  height: 200px;
-  background-color: #C4E9E2;
+  height: auto;
   text-align: left;
   text-transform: uppercase;
   font-size: 0.5em;
@@ -163,6 +162,7 @@ label {
   color: #2B8A77;
   letter-spacing: 2px;
 }
+<<<<<<< Updated upstream
 .floating-button{
   position: absolute;
   top: 10px;
@@ -173,3 +173,23 @@ label {
   border-radius: 999px;
   padding: 10px 23px;
 }
+=======
+
+.sidebar-green {	
+  background-color: #C4E9E2;
+  color: #2B8A77;
+}
+
+.sidebar-grey {
+  background-color: #DDD;
+  color: #666;
+}
+
+.sidebar-grey .btn {
+  margin-top: 10px;
+}
+
+.searchgrid-btn {
+  width: 100%; 
+}
+>>>>>>> Stashed changes

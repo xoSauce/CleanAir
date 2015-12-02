@@ -9,7 +9,7 @@ export default class GeoLocationButton extends React.Component {
     this.state = {geolocation: navigator.geolocation};
   }
   render(){
-    var button = (this.state.geolocation)? <div className="btn btn-default featured-btn" role="button" onClick={this.storeGeoLocation.bind(this)}>Use my current location</div> : '';
+    var button = (this.state.geolocation)? <div className="btn btn-default btn-xs btn-success searchgrid-btn" role="button" onClick={this.storeGeoLocation.bind(this)}>Use current location <i className={"icon-location-arrow"}></i></div> : '';
     return (
       <span>{button}</span>
     )

@@ -19,26 +19,21 @@ export default class SideNav extends React.Component {
       <div id="sidebar">
 
         <div className={["sidebar-body", (this.state.show?'open':'closed')].join(" ")}>
-          <div className={"sidebar-grid"}>
-            Search <i className={"icon-search"}></i>
+          <div className={"sidebar-grid sidebar-green"}>
+             <i className={"icon-search"}></i> Search
+            <LocationField
+              storeLocation={this.props.storeLocation}
+              geolocation={this.props.geolocation}
+              currentLocation={this.state.showCurrentLocation}/>
+            <GeoLocationButton text={this.props.geolocation.postcode} storeLocation={this.props.storeLocation}/>
           </div>
-          <label>Enter Location</label>
-          <LocationField 
-            storeLocation={this.props.storeLocation} 
-            geolocation={this.props.geolocation}
-            currentLocation={this.state.showCurrentLocation}/>
-          <hr/>
-          <GeoLocationButton text={this.props.geolocation.postcode} storeLocation={this.props.storeLocation}/>
-          <hr/>
-          <div>
-            <Link to={'/map/property-modal'}>Property Search Edit</Link>
+          <div className={"sidebar-grid sidebar-grey"}>
+            <i className={"icon-filter"}></i> Search Filter
+            <Link className={"btn btn-default btn-xs searchgrid-btn"} to={'/map/property-modal'}>Property Search Edit <i className={"icon-home"}></i></Link>
           </div>
-          <div>
-            List of things that we are looking for
-          </div>
-          <hr/>
-          <div>
-            <Link to={'/map/user-modal'}>User information</Link>
+          <div className={"sidebar-grid sidebar-grey"}>
+            <i className={"icon-user"}></i> User Information
+            <Link className={"btn btn-default btn-xs searchgrid-btn"} to={'/map/user-modal'}>Personal Info Edit <i className={"icon-exclamation-triangle"}></i></Link>
           </div>
           <hr/>
           <Link className="btn btn-default featured-btn" to={"/map"}>Search</Link>
