@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "babelify": "^6.4.0",
+    "google-map-react": "^0.9.3",
     "history": "^1.13.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",

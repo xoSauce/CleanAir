@@ -6,3 +6,4 @@ import routes from './routes.jsx';
 
 const history = createHashHistory({queryKey:false});
 ReactDOM.render(<Router history={history}>{routes}</Router>, document.getElementById('app'))
+
