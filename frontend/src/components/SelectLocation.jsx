@@ -7,14 +7,9 @@ import GeoLocationButton from './GeoLocationButton.jsx';
 export default class SelectLocation extends React.Component {
   constructor(props){
     super(props);
-    if(this.props.geolocation.postcode != null){
-      this.props.history.replaceState(null, '/map');
-    }
-  }
-  componentDidUpdate(){
-    if(this.props.geolocation.postcode != null){
-      this.props.history.replaceState(null, '/map');
-    } 
+    // if(this.props.geolocation.postcode != null){
+    //   this.props.history.replaceState(null, '/map');
+    // }
   }
   render(){
     return (<div>
