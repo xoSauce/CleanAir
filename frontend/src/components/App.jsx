@@ -80,7 +80,8 @@ var App = React.createClass({
     var children = React.Children.map(this.props.children, function(child) {
         return React.cloneElement(child, { 
           pollution: _this.state.pollution, 
-          geolocation: _this.state.geolocation, 
+          geolocation: _this.state.geolocation,
+          londonProperties: _this.state.londonProperties,
           storeLocation: _this.storeLocation, 
           updateFilters: _this.updateFilters });
     });
