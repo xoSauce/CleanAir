@@ -33,12 +33,11 @@ export default class SideNav extends React.Component {
           </div>
           <div className={"sidebar-grid sidebar-grey"}>
             <i className={"icon-user"}></i> User Information
-            <Link className={"btn btn-default btn-xs searchgrid-btn"} to={'/map/user-modal'}>Personal Info Edit <i className={"icon-exclamation-triangle"}></i></Link>
+            <Link className={"btn btn-default btn-xs searchgrid-btn"} to={'/map/user-modal'}>Personal Info Edit <i className={"icon-info"}></i></Link>
           </div>
           <hr/>
           <Link className="btn btn-default featured-btn" to={"/map"}>Search</Link>
           <div className="toggle-button" onClick={this.toggleShow.bind(this)}>{this.state.show? <i className={"icon-chevron-left"}></i>: <i className={"icon-chevron-right"}></i>}</div>
-          <Link to="map/warning-modal">Warnings</Link>
         </div>
       </div>
       )
