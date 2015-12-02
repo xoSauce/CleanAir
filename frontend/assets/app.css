@@ -81,6 +81,11 @@ label {
   font-weight: 400 !important;
 }
 
+#map {
+  width: 100%;
+  height: 100%;
+}
+
 #panel {
   position: absolute;
   width: 100%; height: 100%;
