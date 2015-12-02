@@ -567,8 +567,11 @@ componentDidMount(){
   ];
 
 	heatmap.set('radius', 20);
-	heatmap.set('gradient', gradient);
-	heatmap.set('opacity', 0.2);
+	//heatmap.set('gradient', gradient);
+	heatmap.set('opacity', 0.5);
+	heatmap.set('dissipating', false);
+	heatmap.set('radius', 20);
+
 }
 
   render() {
