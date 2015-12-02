@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-var Ajax = require('react-ajax');
 const ls = window.localStorage
 
 function ajax(url, cb){
@@ -66,7 +65,7 @@ var App = React.createClass({
   storeLocationProperties: function(data){
     console.log(data);
     this.setState({locationProperties: data});
-    ls.locationProperties = JSON.stringify(data);
+    // ls.locationProperties = JSON.stringify(data);
   },
   storeLondonProperties: function(data){
     this.setState({londonProperties: data});

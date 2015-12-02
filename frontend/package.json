@@ -12,8 +12,8 @@
     "babelify": "^6.4.0",
     "history": "^1.13.1",
     "react": "^0.14.0",
-    "react-ajax": "^0.1.1",
     "react-dom": "^0.14.0",
+    "react-geosuggest": "^1.13.0",
     "react-gmaps": "^1.2.0",
     "react-router": "^1.0.0",
     "react-slider": "^0.6.0"
