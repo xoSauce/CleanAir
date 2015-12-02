@@ -16,7 +16,7 @@ function ajax(url, cb){
 var AjaxQueries = React.createClass({
   render: function(){
     if(this.props.pollution.length==0){
-      ajax("/req/db/pollution_data", this.props.storePollution);
+      ajax("/req/db/traffic_data", this.props.storePollution);
     }
     if(this.props.londonProperties.length == 0){
       ajax("/req/api/property_listings", this.props.storeLondonProperties);
@@ -52,7 +52,7 @@ var App = React.createClass({
     return obj;
   },
   storePollution: function(data){
-    var data = data.slice(1,300);
+    var data = data.slice(0,3000);
     this.setState({pollution: data, displayPollution: data});
     ls.pollution = JSON.stringify(data);
   },
