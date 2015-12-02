@@ -15,6 +15,9 @@ export default class GeoLocationButton extends React.Component {
     )
   }
   storeGeoLocation(){
+    if(this.props.history != undefined){
+      this.props.history.pushState(null, '/map');
+    }
     var _this = this;
     this.state.geolocation.getCurrentPosition(function(location){
       _this.props.storeLocation({
