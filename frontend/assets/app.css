@@ -150,6 +150,12 @@ label {
   background-color: white;
 }
 
+.input-group-wrapper{
+  display:inline-block;
+  text-align:left;
+}
+
+
 .sidebar-grid {
   width: 270px;
   -webkit-border-radius: 5px;
@@ -199,6 +205,7 @@ label {
   width: 100%;
 }
 
+
 .sidebar-bigbtn {
   width: 95%;
   text-transform: uppercase;
@@ -212,3 +219,16 @@ label {
   letter-spacing: 2px;
   padding: 5px 10px;
 }
+
+.input-group label
+{
+  font-size: 0.5em;
+}
+
+input[type="number"] 
+{
+   width:200px;
+}
+
+
+
