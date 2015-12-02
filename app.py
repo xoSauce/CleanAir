@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, render_template, send_from_directory
 from decimal import *
+import requests
+import time
 import json
 import urllib2
 import awsdb
@@ -35,8 +37,24 @@ def get_pollution_data():
     print "Requesting pollution data"
     cnx = awsdb.connect();
     result = awsdb.query(cnx, "SELECT * FROM pollution_table");
+    base_link = 'https://maps.googleapis.com/maps/api/geocode/json?address='
+    print 'Here'
+    count = 0
+    for r in result:
+        if r.get('lat') == None or r.get('long') == None:    
+            time.sleep(0.5)
+            link = base_link + r['location']
+            gmaps_result = requests.get(link).json()
+            print gmaps_result
+            lat = gmaps_result['results'][0]['geometry']['location']['lat']
+            longi = gmaps_result['results'][0]['geometry']['location']['lng']
+            awsdb.mutate(cnx, "UPDATE pollution_table pt SET pt.lat = %s, pt.long = %s WHERE pt.id=%s;", param=[lat, longi, r.get('id')])
+            r['lat'] = lat
+            r['long'] = longi
+            count += 1
     awsdb.close(cnx);
     response = json.dumps(result, default=json_date_handler)
+
     return response
 
 @app.route("/req/db/traffic_data/<lat>/<longi>", methods=['GET'])
