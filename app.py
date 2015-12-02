@@ -111,7 +111,7 @@ def get_property_listings_with_params(lat, longi):
     'latitude=' + lat,
     'longitude=' + longi,
     'api_key=nkqx8hj64jsugpzuzcukb9tw',
-    'page_size=50',
+    'page_size=25',
     'summarised=true'
     ]
     param_string = "&".join(params)
@@ -128,7 +128,7 @@ def get_property_listings():
         params = [
         'area=London',
         'api_key=nkqx8hj64jsugpzuzcukb9tw',
-        'page_size=100',
+        'page_size=25',
         'summarised=true'
         ]
         param_string = "&".join(params)
