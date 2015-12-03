@@ -56,7 +56,17 @@ export default class GMaps extends React.Component {
     });
     heatmap.setMap(map);
 
-  	 // },2000 );
+    for (var i = this.props.londonProperties.length - 1; i >= 0; i--) {
+      var lat = this.props.londonProperties[i].latitude;
+      var lng = this.props.londonProperties[i].longitude;
+      var title =this.props.londonProperties[i].displayable_address;
+
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(lat, lng),
+        map: map,
+        title: title
+      });
+     }
 
     var gradient = [
       'rgba(0, 255, 255, 0)',
