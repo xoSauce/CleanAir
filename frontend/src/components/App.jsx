@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-const ls = window.localStorage
+const ls = window.localStorage;
+var GoogleAnalytics = require('react-g-analytics');
 
 function ajax(url, cb){
   url = "http://cleanair.me.uk" + url;
@@ -92,6 +93,7 @@ var App = React.createClass({
           storeLondonProperties={this.storeLondonProperties}
           pollution={this.state.pollution}
           storePollution={this.storePollution}/>
+        <GoogleAnalytics id="UA-70987418-1"/>
         {children}
       </div>
     );
