@@ -19,7 +19,7 @@ var AjaxQueries = React.createClass({
     if(this.props.pollution.length==0){
       ajax("/req/db/traffic_data", this.props.storePollution);
     }
-    if(this.props.londonProperties.length == 0){
+    if(this.props.londonProperties.length < 100){
       ajax("/req/api/property_listings", this.props.storeLondonProperties);
     }
     return(
