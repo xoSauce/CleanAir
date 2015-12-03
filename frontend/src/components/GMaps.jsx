@@ -85,9 +85,8 @@ export default class GMaps extends React.Component {
 
     //set info windows
 
+    var prev_infowindow = false; 
     
-
-
     for (var i = 0; i < markers.length; i++) {
 
         var infowindow = new google.maps.InfoWindow({
@@ -98,6 +97,11 @@ export default class GMaps extends React.Component {
 
         google.maps.event.addListener(markers[i], 'click', function(i) {
           return function() {
+            if( prev_infowindow ) {
+               prev_infowindow.close();
+            }
+
+            prev_infowindow = infoWindows[i];
             infoWindows[i].open(map, markers[i]);
           }
         }(i));
