@@ -14,14 +14,12 @@ export default class SelectLocation extends React.Component {
       <div id="search">
         <div id="searchbox">
           <div className="col-sm-12">
-            <label>Search an area by specifying the postcode below</label>
+            <label>Search an area by specifying the place or postcode below</label>
           </div>
-          <div className="col-sm-6">
-            <GeoLocationButton history={this.props.history} storeLocation={this.props.storeLocation} geolocation={this.props.geolocation}/>
-          </div>
-          <div className="col-sm-6">
+          <div className="col-sm-12 intro-search">
             <div className="row"><LocationField currentLocation={true} geolocation={this.props.geolocation} storeLocation={this.props.storeLocation}/></div>
-            <div className="row"><Link className="btn btn-primary featured-btn" role="button" to="/map">Search</Link></div>
+            <GeoLocationButton history={this.props.history} storeLocation={this.props.storeLocation} geolocation={this.props.geolocation}/>
+            <div className="row"><Link className="btn btn-primary featured-btn" role="button" to="/map">Search <i className={"icon-search"}></i></Link></div>
           </div>
         </div>
       </div>
