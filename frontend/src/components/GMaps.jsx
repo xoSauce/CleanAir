@@ -89,7 +89,7 @@ export default class GMaps extends React.Component {
   	//heatmap.set('gradient', gradient);
   	heatmap.set('opacity', 0.5);
   	//heatmap.set('dissipating', false);
-  	heatmap.set('radius', 20);
+  	heatmap.set('radius', 40);
 
     _this.setState({map: map, heatmap: heatmap});
   }
