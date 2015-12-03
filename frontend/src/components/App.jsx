@@ -62,7 +62,7 @@ var App = React.createClass({
     // {postcode,lat,lon}
     this.setState({geolocation: data});
     ls.geolocation = JSON.stringify(data);
-    ajax('/req/api/property_listings/' + data.lat +'/' + data.lon, this.storeLocationProperties);
+    // ajax('/req/api/property_listings/' + data.lat +'/' + data.lon, this.storeLocationProperties);
   },
   storeLocationProperties: function(data){
     console.log(data);
@@ -79,16 +79,16 @@ var App = React.createClass({
   render: function() {
     var _this = this;
     var children = React.Children.map(this.props.children, function(child) {
-        return React.cloneElement(child, { 
-          pollution: _this.state.pollution, 
+        return React.cloneElement(child, {
+          pollution: _this.state.pollution,
           geolocation: _this.state.geolocation,
           londonProperties: _this.state.londonProperties,
-          storeLocation: _this.storeLocation, 
+          storeLocation: _this.storeLocation,
           updateFilters: _this.updateFilters });
     });
     return (
       <div>
-        <AjaxQueries 
+        <AjaxQueries
           londonProperties={this.state.londonProperties}
           storeLondonProperties={this.storeLondonProperties}
           pollution={this.state.pollution}

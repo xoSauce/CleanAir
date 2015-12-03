@@ -25,7 +25,7 @@ export default class SideNav extends React.Component {
               storeLocation={this.props.storeLocation}
               geolocation={this.props.geolocation}
               currentLocation={this.state.showCurrentLocation}/>
-            <GeoLocationButton text={this.props.geolocation.postcode} storeLocation={this.props.storeLocation}/>
+            <GeoLocationButton history={this.props.history} text={this.props.geolocation.postcode} storeLocation={this.props.storeLocation}/>
           </div>
           <div className={"sidebar-grid sidebar-grey"}>
             <i className={"icon-filter"}></i> Search Filter

@@ -16,7 +16,7 @@ export default class GeoLocationButton extends React.Component {
   }
   storeGeoLocation(){
     if(this.props.history != undefined){
-      this.props.history.pushState(null, '/map');
+      this.props.history.pushState(null, '/map/loading');
     }
     var _this = this;
     this.state.geolocation.getCurrentPosition(function(location){
@@ -25,6 +25,9 @@ export default class GeoLocationButton extends React.Component {
         lat: location.coords.latitude,
         lon: location.coords.longitude
       });
+      if(_this.props.history != undefined){
+        _this.props.history.replaceState(null, '/map');
+      }
     },function(){return 0}, function(){return {maximumAge:5*60*1000}});
   }
 }
