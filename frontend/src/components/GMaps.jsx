@@ -54,15 +54,15 @@ componentDidMount(){
 	        weight: Idx
      	 });
     };
-
  
 
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 13,
+    zoom: 15,
     center: {lat: this.props.geolocation.lat, lng: this.props.geolocation.lon},
     disableDefaultUI: true,
     zoomControl: true
   });
+  this.setState({map: map});
 
   // window.setTimeout(function(){
   var heatmap = new google.maps.visualization.HeatmapLayer({
@@ -70,6 +70,18 @@ componentDidMount(){
     map: map
   });
   heatmap.setMap(map);
+
+  for (var i = this.props.londonProperties.length - 1; i >= 0; i--) {
+	var lat = this.props.londonProperties[i].latitude; 
+	var lng = this.props.londonProperties[i].longitude;
+	var title =this.props.londonProperties[i].displayable_address;
+
+	var marker = new google.maps.Marker({
+	    position: new google.maps.LatLng(lat, lng),
+	    map: map,
+	    title: title
+	  });
+   };
 
 	 // },2000 );
 	
@@ -98,6 +110,9 @@ componentDidMount(){
 
 }
 
+componentDidUpdate(){
+	this.state.map.setCenter({lat: this.props.geolocation.lat, lng: this.props.geolocation.lon})
+}
   render() {
     return (
       <section style={{height: "100%"}}>
