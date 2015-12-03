@@ -27,7 +27,7 @@ export default class UserModal extends React.Component {
                 &nbsp;&nbsp;<input type="radio" name="age" onclick="check(this.value)" value="50-60"/>&nbsp;<label>50-60</label>
                 &nbsp;&nbsp;<input type="radio" name="age" onclick="check(this.value)" value="60"/>&nbsp;<label>&gt;60</label>
               </from>
-            </div> 
+            </div>
           </div>
           <p>Do you have any children?</p>
           <div className="input-group-wrapper">
@@ -36,21 +36,20 @@ export default class UserModal extends React.Component {
                 <input type="radio" name="children" onclick="check(this.value)" value="Yes"/><label>&nbsp;Yes</label>
                 &nbsp;&nbsp;<input type="radio" name="children" onclick="check(this.value)" value="No"/><label>&nbsp;No</label>
               </from>
-            </div> 
+            </div>
           </div>
-          <p>Do you have any respiratory?</p>
+          <p>Do you have any respiratory conditions?</p>
           <div className="input-group-wrapper">
             <div className="input-group">
              <from>
-                <input type="radio" name="resp" onclick="check(this.value)" value="Asthma"/><label>&nbsp;Asthma</label>
-                &nbsp;&nbsp;<input type="radio" name="resp" onclick="check(this.value)" value="COPD"/><label>&nbsp;COPD</label>
-                &nbsp;&nbsp;<input type="radio" name="resp" onclick="check(this.value)" value="None"/><label>&nbsp;None</label>
+                <input type="checkbox" name="resp" onclick="check(this.value)" value="Asthma"/><label>&nbsp;Asthma</label>
+                &nbsp;&nbsp;<input type="checkbox" name="resp" onclick="check(this.value)" value="COPD"/><label>&nbsp;COPD</label>
+              &nbsp;&nbsp;<input type="checkbox" name="resp" onclick="check(this.value)" value="None"/><label>&nbsp;None</label>
              </from>
-            </div> 
+            </div>
           </div>
         </div>
       </div>
       )
   }
 }
-
