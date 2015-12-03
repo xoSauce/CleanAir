@@ -133,9 +133,6 @@ def get_property_listings():
         ]
         param_string = "&".join(params)
         listings = json.loads(urllib2.urlopen("http://api.zoopla.co.uk/api/v1/property_listings.json?" + param_string).read())['listing']
-        filtered_listings = []
-        for l in listings:
-
         # Timeout is in seconds, set timeout for 30 minutes
         cache.set('listings', listings, timeout= 60*30)
     #indent/separators are for debugging/prettyprinting purposes
