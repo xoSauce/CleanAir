@@ -28,18 +28,6 @@ export default class GMaps extends React.Component {
     this.state = {heatmapData: heatmapData};
   }
 
-  onDragEnd(e) {
-    console.log('onDragEnd', e);
-  }
-
-  onCloseClick() {
-    console.log('onCloseClick');
-  }
-
-  onClick(e) {
-    console.log('onClick', e);
-  }
-
   initMap(){
     var coords = (this.props.geolocation.lat != undefined && this.props.geolocation.lon != undefined)? {lat: this.props.geolocation.lat,lon: this.props.geolocation.lon} : defaultcoords;
     var _this = this;
@@ -99,7 +87,7 @@ export default class GMaps extends React.Component {
   }
   componentDidUpdate(){
     var coords = (this.props.geolocation.lat != undefined && this.props.geolocation.lon != undefined)? {lat: this.props.geolocation.lat,lon: this.props.geolocation.lon} : defaultcoords;
-    this.state.map.setCenter({lat: coords.lat, lng: coords.lon});
+    this.state.map.panTo({lat: coords.lat, lng: coords.lon});
   }
 
   render() {
