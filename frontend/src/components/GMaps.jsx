@@ -29,6 +29,9 @@ export default class GMaps extends React.Component {
   }
 
   initMap(){
+
+    //init and center google map
+
     var coords = (this.props.geolocation.lat != undefined && this.props.geolocation.lon != undefined)? {lat: this.props.geolocation.lat,lon: this.props.geolocation.lon} : defaultcoords;
     var _this = this;
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -38,23 +41,71 @@ export default class GMaps extends React.Component {
       zoomControl: true
     });
 
+    //init Heatmap layer
+
     var heatmap = new google.maps.visualization.HeatmapLayer({
       data: _this.state.heatmapData,
       map: map
     });
     heatmap.setMap(map);
 
+    //set zoopla property markers
+
+    var markers = [];
+    var infoWindows = [];
+    var infoWindowContent = []
+
     for (var i = this.props.londonProperties.length - 1; i >= 0; i--) {
       var lat = this.props.londonProperties[i].latitude;
       var lng = this.props.londonProperties[i].longitude;
       var title =this.props.londonProperties[i].displayable_address;
+      
+      var contentString = '<div class="infoBoxContent">'+
+        '<img src="'+this.props.londonProperties[i].agent_logo+'" alt="Agent Logo" width="42" height="42">'+
+        '<h2 class="firstHeading">'+ this.props.londonProperties[i].displayable_address + '</h2>'+
+        '<img src="'+this.props.londonProperties[i].thumbnail_url+'" alt="property Logo" width="42" height="42">'+
+        '<div id="bodyContent">'+
+        '<p>'+ this.props.londonProperties[i].description+
+        '</p>'+
+        '<p><a href="'+ this.props.londonProperties[i].details_url+'">'+
+        'more details</a> '+
+        '</p>'+
+        '</div>'+
+        '</div>';
 
       var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(lat, lng),
-        map: map,
-        title: title
-      });
+          position: new google.maps.LatLng(lat, lng),
+          map: map,
+          title: title,
+        });
+
+      markers.push(marker);
+      infoWindowContent.push(contentString)
      }
+
+    //set info windows
+
+    
+
+
+    for (var i = 0; i < markers.length; i++) {
+
+        var infowindow = new google.maps.InfoWindow({
+          content: infoWindowContent[i]
+        });
+
+        infoWindows.push(infowindow);
+
+        google.maps.event.addListener(markers[i], 'click', function(i) {
+          return function() {
+            infoWindows[i].open(map, markers[i]);
+          }
+        }(i));
+    }
+
+
+
+    //map config options
 
     var gradient = [
       'rgba(0, 255, 255, 0)',
