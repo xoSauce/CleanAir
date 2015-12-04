@@ -96,6 +96,7 @@ label {
   top: 0;
   height: 100%;
   z-index: 99;
+  pointer-events: none; /*workaround*/
 }
 .sidebar-body{
   width: inherit;
@@ -106,6 +107,7 @@ label {
   -webkit-box-shadow: 13px 17px 49px -12px rgba(0,0,0,0.5);
   -moz-box-shadow: 13px 17px 49px -12px rgba(0,0,0,0.5);
   box-shadow: 13px 17px 49px -12px rgba(0,0,0,0.5);
+  pointer-events: auto; /*workaround*/
 }
 .sidebar-body.closed{
   transform: translateX(-100%);
