@@ -9,7 +9,8 @@ import LocationField from './LocationField.jsx';
 export default class SideNav extends React.Component {
   constructor(props){
     super(props);
-    this.state = {show: true, showCurrentLocation: true};
+    console.log(window.innerWidth);
+    this.state = {show: (window.innerWidth > 768), showCurrentLocation: true};
   }
   toggleShow(){
     this.setState({show: !this.state.show});
