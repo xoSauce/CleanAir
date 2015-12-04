@@ -2,8 +2,6 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
-//import {GoogleMap, Marker} from "react-google-maps";
 
 const defaultcoords = {
   lat: 51.4964238,
@@ -67,7 +65,7 @@ export default class GMaps extends React.Component {
         '<div id="bodyContent">'+
         '<p>'+ this.props.londonProperties[i].description+
         '</p>'+
-        '<p><a href="'+ this.props.londonProperties[i].details_url+'">'+
+        '<p><a target="_blank" href="'+ this.props.londonProperties[i].details_url+'">'+
         'more details</a> '+
         '</p>'+
         '</div>'+
@@ -77,6 +75,7 @@ export default class GMaps extends React.Component {
           position: new google.maps.LatLng(lat, lng),
           map: map,
           title: title,
+          icon: 'http://localhost:8000/assets/images/marker.png'
         });
 
       markers.push(marker);
