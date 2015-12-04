@@ -28,6 +28,13 @@ gulp.task('browserify', function () {
         .pipe(notify("Built Bundle"));
 });
 
+gulp.task('serve', function(){
+  gulp.src('./')
+        .pipe(webserver({
+            livereload: true,
+        }));
+});
+
 gulp.task('default', ['browserify']);
 
 gulp.task('watch', function () {
