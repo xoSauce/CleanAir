@@ -6,8 +6,8 @@ import ReactDOM from 'react-dom';
 //import {GoogleMap, Marker} from "react-google-maps";
 
 const defaultcoords = {
-  lat: 51.5258541,
-  lon: -0.15040660000006028
+  lat: 51.4964238,
+  lon: -0.14392069999996693
 };
 
 export default class GMaps extends React.Component {
@@ -147,7 +147,7 @@ export default class GMaps extends React.Component {
 
   render() {
     return (
-      <section style={{height: "100%"}}>
+      <section style={{height: "calc(100% - 50px)"}}>
       <div id="map" containerProps={{
           style: {
             height: "100%",

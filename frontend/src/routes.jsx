@@ -18,7 +18,7 @@ export default (
     	<IndexRoute component={Intro}/>
       <Route component={SelectLocation} path="/select-location"/>
       <Route component={Map} path="/map">
-        <Route component={Loading} path="/map/loading"/>
+        <Route component={Loading} path="/map/loading/:type"/>
         <Route component={UserModal} path="/map/user-modal"/>
         <Route component={PropertyModal} path="/map/property-modal"/>
         <Route component={InfoModal} path="/map/info-modal"/>
