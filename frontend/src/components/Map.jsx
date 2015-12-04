@@ -14,7 +14,7 @@ export default class Map extends React.Component {
     return (
       <div id="panel">
         <div id="panel-logo"></div>
-        <Link className="floating-button" to="/map/info-modal">?</Link>
+        <Link className="floating-button" to="/map/info-modal"><i className={"icon-info"}></i></Link>
         <GMaps geolocation={this.props.geolocation} pollution={this.props.pollution} londonProperties={this.props.londonProperties}/>
         <SideNav history={this.props.history} geolocation={this.props.geolocation} pollution={this.props.pollution} storeLocation={this.props.storeLocation}/>
         {this.props.children}

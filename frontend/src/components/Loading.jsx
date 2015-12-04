@@ -7,8 +7,7 @@ export default class Loading extends React.Component {
   render(){
     return(
        <div className="loading-modal modal-wrapper">
-         <div className="modal-inner">
-           Loading
+         <div className="plus-loader">
          </div>
        </div>
      )
