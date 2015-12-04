@@ -75,7 +75,7 @@ export default class GMaps extends React.Component {
           position: new google.maps.LatLng(lat, lng),
           map: map,
           title: title,
-          icon: 'http://localhost:8000/assets/images/marker.png'
+          icon: 'http://cleanair.me.uk/assets/images/marker.png'
         });
 
       markers.push(marker);
