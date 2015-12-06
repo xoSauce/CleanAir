@@ -125,7 +125,7 @@ var App = React.createClass({
     ls.geolocation = JSON.stringify(data);
   },
   storeLondonProperties: function(data){
-    this.setState({londonProperties: data});
+    this.setState({londonProperties: data, filteredProperties: data});
     var obj = [cacheNumber, data];
     ls.londonProperties = JSON.stringify(obj);
   },
@@ -186,8 +186,7 @@ var App = React.createClass({
           geolocation: _this.state.geolocation,
           londonProperties: _this.state.filteredProperties,
           storeLocation: _this.storeLocation,
-          updateFilters: _this.updateFilters,
-          filters: _this.state.filters});
+          updateFilters: _this.updateFilters});
     });
     return (
       <div>
@@ -195,7 +194,8 @@ var App = React.createClass({
           londonProperties={this.state.londonProperties}
           storeLondonProperties={this.storeLondonProperties}
           pollution={this.state.pollution}
-          storePollution={this.storePollution}/>
+          storePollution={this.storePollution}
+          filter={this.filterProperties}/>
         <GoogleAnalytics id="UA-70987418-1"/>
         {children}
       </div>
