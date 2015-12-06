@@ -186,7 +186,8 @@ var App = React.createClass({
           geolocation: _this.state.geolocation,
           londonProperties: _this.state.filteredProperties,
           storeLocation: _this.storeLocation,
-          updateFilters: _this.updateFilters});
+          updateFilters: _this.updateFilters,
+          filters: _this.state.filters});
     });
     return (
       <div>
