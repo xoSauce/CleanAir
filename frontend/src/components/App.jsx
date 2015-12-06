@@ -100,7 +100,7 @@ var App = React.createClass({
         if(filters.maxprice != undefined && ((filters.minprice*1000) < parseInt(obj.price))){
           return false;
         }
-        if(filters.minbeds != undefined && (filters.minbeds > parseInt(obj.num_beds))){
+        if(filters.minbeds != undefined && (filters.minbeds > parseInt(obj.num_bedrooms))){
           return false;
         }
         return true;
@@ -165,7 +165,7 @@ var App = React.createClass({
       if(filters.maxprice != undefined && ((filters.minprice*1000) < parseInt(obj.price))){
         return false;
       }
-      if(filters.minbeds != undefined && (filters.minbeds > parseInt(obj.num_beds))){
+      if(filters.minbeds != undefined && (filters.minbeds > parseInt(obj.num_bedrooms))){
         return false;
       }
       return true;
