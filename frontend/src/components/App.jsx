@@ -37,7 +37,16 @@ var App = React.createClass({
         lat: null,
         lon: null
       },
-      londonProperties:[]
+      londonProperties:[],
+      filters: {
+        toBuy: true,
+        toRent: true,
+        houses: true,
+        flats: true,
+        minprice: null,
+        maxprice: null,
+        minbeds: null
+      }
     }
 
     //parse from localstorage if not undefined
@@ -49,6 +58,18 @@ var App = React.createClass({
     }
     if(ls.londonProperties!=undefined){
       obj.londonProperties = JSON.parse(ls.londonProperties)
+    }
+    for(var key in obj.filters){
+      key += 'settings_'
+      if(ls[key]!= undefined){
+        var ls_value = JSON.parse(ls[key]);
+        if(ls_value == obj.filters[key]){
+          ls.removeItem(key);
+        }
+        else{
+          obj.filters[key] = ls_value;
+        }
+      }
     }
     return obj;
   },
@@ -74,7 +95,17 @@ var App = React.createClass({
     ls.londonProperties = JSON.stringify(data);
   },
   updateFilters: function(options){
+    var filters = this.state.filters;
     console.log(options);
+    for(var key in this.state.filters){
+      for(var option_key in options){
+        if(key == option_key){
+          filters[option_key] = options[option_key]
+          ls['settings_' + option_key] = JSON.stringify(options[option_key])
+        }
+      }
+    }
+    this.setState({filters: filters});
   },
   render: function() {
     var _this = this;
@@ -84,7 +115,8 @@ var App = React.createClass({
           geolocation: _this.state.geolocation,
           londonProperties: _this.state.londonProperties,
           storeLocation: _this.storeLocation,
-          updateFilters: _this.updateFilters });
+          updateFilters: _this.updateFilters,
+          filters: _this.state.filters});
     });
     return (
       <div>
