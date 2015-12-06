@@ -4,8 +4,7 @@ var GoogleAnalytics = require('react-g-analytics');
 var cacheNumber = 1;
 
 function ajax(url, cb){
-  // url = "http://cleanair.me.uk" + url;
-  url = "http://localhost:5000" + url;
+  url = "http://cleanair.me.uk" + url;
   var r = new XMLHttpRequest();
   r.open("GET", url, true);
   r.onreadystatechange = function () {
