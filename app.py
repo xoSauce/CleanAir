@@ -55,7 +55,7 @@ def get_pollution_data():
 
         awsdb.close(cnx);
         response = json.dumps(result, default=json_date_handler)
-        cache.set('pollution_data', response)
+        cache.set('pollution_data', response, timeout= 60*60*24)
     else:
         response = pollution_data
 
@@ -102,22 +102,25 @@ def get_traffic_data():
     response = json.dumps(result, default=json_date_handler)
     return response
 
-@app.route("/req/api/property_listings/<lat>/<longi>", methods=['GET'])
-def get_property_listings_with_params(lat, longi):
-    listings = cache.get('listings')
-    print "Requesting property listings from Zoopla for lat: " + lat + ", lon: " + longi
-    params = [
-    'area=London',
-    'latitude=' + lat,
-    'longitude=' + longi,
-    'api_key=nkqx8hj64jsugpzuzcukb9tw',
-    'page_size=50',
-    'summarised=true'
-    ]
-    param_string = "&".join(params)
-    listings = json.loads(urllib2.urlopen("http://api.zoopla.co.uk/api/v1/property_listings.json?" + param_string).read())['listing']
-    #indent/separators are for debugging/prettyprinting purposes
-    return json.dumps(listings, indent=4, separators=(',', ': '))
+def getZooplaListings(param_string):
+    t = json.loads(urllib2.urlopen("http://api.zoopla.co.uk/api/v1/property_listings.json?" + param_string).read())['listing']
+    for i in range(2, 5):
+        t += json.loads(urllib2.urlopen("http://api.zoopla.co.uk/api/v1/property_listings.json?page_number=" + str(i) + "&" + param_string).read())['listing']
+    return t
+def filterListingAttributes(obj):
+    return {
+        'agent_logo': obj['agent_logo'],
+        'latitude': obj['latitude'],
+        'longitude': obj['longitude'],
+        'displayable_address': obj['displayable_address'],
+        'thumbnail_url': obj['thumbnail_url'],
+        'description': obj['description'],
+        'details_url': obj['details_url'],
+        'status': obj['status'],
+        'property_type': obj['property_type'],
+        'price': obj['price'],
+        'num_bedrooms': obj['num_bedrooms']
+     }
 
 @app.route("/req/api/property_listings", methods=['GET'])
 def get_property_listings():
@@ -127,7 +130,8 @@ def get_property_listings():
         print "Not cached: requesting property listings from Zoopla"
         params = ['area=London','api_key=nkqx8hj64jsugpzuzcukb9tw','page_size=100','summarised=true']
         param_string = "&".join(params)
-        listings = json.loads(urllib2.urlopen("http://api.zoopla.co.uk/api/v1/property_listings.json?" + param_string).read())['listing']
+        raw_listings = getZooplaListings(param_string)
+        listings = map(filterListingAttributes, raw_listings)
         # Timeout is in seconds, set timeout for 24 hours
         cache.set('listings', listings, timeout= 60*60*24)
     #indent/separators are for debugging/prettyprinting purposes
