@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 const ls = window.localStorage;
 var GoogleAnalytics = require('react-g-analytics');
+var cacheNumber = 1;
 
 function ajax(url, cb){
-  url = "http://cleanair.me.uk" + url;
+  // url = "http://cleanair.me.uk" + url;
+  url = "http://localhost:5000" + url;
   var r = new XMLHttpRequest();
   r.open("GET", url, true);
   r.onreadystatechange = function () {
@@ -58,7 +60,10 @@ var App = React.createClass({
       obj.geolocation = JSON.parse(ls.geolocation);
     }
     if(ls.londonProperties!=undefined){
-      obj.londonProperties = JSON.parse(ls.londonProperties)
+      var ls_value = JSON.parse(ls.londonProperties);
+      if(ls_value[0] == 1){
+          obj.londonProperties = JSON.parse(ls.londonProperties)
+      }
     }
     for(var key in obj.filters){
       var ls_key = 'settings_' + key;
@@ -122,7 +127,8 @@ var App = React.createClass({
   },
   storeLondonProperties: function(data){
     this.setState({londonProperties: data});
-    ls.londonProperties = JSON.stringify(data);
+    var obj = [cacheNumber, data];
+    ls.londonProperties = JSON.stringify(obj);
   },
   updateFilters: function(options){
     var filters = this.state.filters;
