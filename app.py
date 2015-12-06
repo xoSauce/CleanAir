@@ -39,7 +39,7 @@ def get_pollution_data():
         count = 0
 
         # for r in result:
-        #     if r.get('lat') == None or r.get('long') == None:    
+        #     if r.get('lat') == None or r.get('long') == None:
         #         if count == 5:
         #             time.sleep(1)
         #             count = 0
@@ -125,12 +125,7 @@ def get_property_listings():
     listings = cache.get('listings')
     if listings is None:
         print "Not cached: requesting property listings from Zoopla"
-        params = [
-        'area=London',
-        'api_key=nkqx8hj64jsugpzuzcukb9tw',
-        'page_size=100',
-        'summarised=true'
-        ]
+        params = ['area=London','api_key=nkqx8hj64jsugpzuzcukb9tw','page_size=100','summarised=true']
         param_string = "&".join(params)
         listings = json.loads(urllib2.urlopen("http://api.zoopla.co.uk/api/v1/property_listings.json?" + param_string).read())['listing']
         # Timeout is in seconds, set timeout for 24 hours

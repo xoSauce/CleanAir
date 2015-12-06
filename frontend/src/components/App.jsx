@@ -38,6 +38,7 @@ var App = React.createClass({
         lon: null
       },
       londonProperties:[],
+      filteredProperties: [],
       filters: {
         toBuy: true,
         toRent: true,
@@ -60,16 +61,51 @@ var App = React.createClass({
       obj.londonProperties = JSON.parse(ls.londonProperties)
     }
     for(var key in obj.filters){
-      key += 'settings_'
-      if(ls[key]!= undefined){
-        var ls_value = JSON.parse(ls[key]);
+      var ls_key = 'settings_' + key;
+      if(ls[ls_key]!= undefined){
+        var ls_value = JSON.parse(ls[ls_key]);
         if(ls_value == obj.filters[key]){
-          ls.removeItem(key);
+          ls.removeItem(ls_key);
         }
         else{
           obj.filters[key] = ls_value;
         }
       }
+    }
+    if(obj.londonProperties.length>0){
+      var filters = obj.filters;
+      var flat_types = ['Flat', 'Block of flats', 'Studio']
+      var filteredProperties = obj.londonProperties.filter(function(obj){
+        if(filters.toBuy && !filters.toRent && obj.status!="for_sale"){
+          return false;
+        }
+        if(filters.toRent && !filters.toBuy && obj.status!="to_rent"){
+          return false;
+        }
+        if(!filters.toRent && !filters.toBuy){
+          return false;
+        }
+        if(filters.houses && !filters.flats && flat_types.includes(obj.property_type)){
+          return false;
+        }
+        if(filters.flats && !filters.houses && !flat_types.includes(obj.property_type)){
+          return false;
+        }
+        if(!filters.flats && !filters.houses){
+          return false;
+        }
+        if(filters.minprice != undefined && (filters.minprice*1000 > parseInt(obj.price))){
+          return false;
+        }
+        if(filters.maxprice != undefined && ((filters.minprice*1000) < parseInt(obj.price))){
+          return false;
+        }
+        if(filters.minbeds != undefined && (filters.minbeds > parseInt(obj.num_beds))){
+          return false;
+        }
+        return true;
+      });
+      obj.filteredProperties = filteredProperties;
     }
     return obj;
   },
@@ -83,12 +119,6 @@ var App = React.createClass({
     // {postcode,lat,lon}
     this.setState({geolocation: data});
     ls.geolocation = JSON.stringify(data);
-    // ajax('/req/api/property_listings/' + data.lat +'/' + data.lon, this.storeLocationProperties);
-  },
-  storeLocationProperties: function(data){
-    console.log(data);
-    this.setState({locationProperties: data});
-    // ls.locationProperties = JSON.stringify(data);
   },
   storeLondonProperties: function(data){
     this.setState({londonProperties: data});
@@ -96,7 +126,6 @@ var App = React.createClass({
   },
   updateFilters: function(options){
     var filters = this.state.filters;
-    console.log(options);
     for(var key in this.state.filters){
       for(var option_key in options){
         if(key == option_key){
@@ -106,6 +135,43 @@ var App = React.createClass({
       }
     }
     this.setState({filters: filters});
+    this.filterProperties();
+  },
+  filterProperties: function(){
+    var filters = this.state.filters;
+    var flat_types = ['Flat', 'Block of flats', 'Studio']
+    var filteredProperties = this.state.londonProperties.filter(function(obj){
+      if(filters.toBuy && !filters.toRent && obj.status!="for_sale"){
+        return false;
+      }
+      if(filters.toRent && !filters.toBuy && obj.status!="to_rent"){
+        return false;
+      }
+      if(!filters.toRent && !filters.toBuy){
+        return false;
+      }
+      if(filters.houses && !filters.flats && flat_types.includes(obj.property_type)){
+        return false;
+      }
+      if(filters.flats && !filters.houses && !flat_types.includes(obj.property_type)){
+        return false;
+      }
+      if(!filters.flats && !filters.houses){
+        return false;
+      }
+      if(filters.minprice != undefined && (filters.minprice*1000 > parseInt(obj.price))){
+        return false;
+      }
+      if(filters.maxprice != undefined && ((filters.minprice*1000) < parseInt(obj.price))){
+        return false;
+      }
+      if(filters.minbeds != undefined && (filters.minbeds > parseInt(obj.num_beds))){
+        return false;
+      }
+      return true;
+    });
+    console.log(this.state.londonProperties.length, filteredProperties.length);
+    this.setState({filteredProperties: filteredProperties});
   },
   render: function() {
     var _this = this;
@@ -113,7 +179,7 @@ var App = React.createClass({
         return React.cloneElement(child, {
           pollution: _this.state.pollution,
           geolocation: _this.state.geolocation,
-          londonProperties: _this.state.londonProperties,
+          londonProperties: _this.state.filteredProperties,
           storeLocation: _this.storeLocation,
           updateFilters: _this.updateFilters,
           filters: _this.state.filters});

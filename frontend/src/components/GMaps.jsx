@@ -57,7 +57,7 @@ export default class GMaps extends React.Component {
       var lat = this.props.londonProperties[i].latitude;
       var lng = this.props.londonProperties[i].longitude;
       var title =this.props.londonProperties[i].displayable_address;
-      
+
       var contentString = '<div class="infoBoxContent">'+
         '<img src="'+this.props.londonProperties[i].agent_logo+'" alt="Agent Logo" width="42" height="42">'+
         '<h2 class="firstHeading">'+ this.props.londonProperties[i].displayable_address + '</h2>'+
@@ -81,11 +81,10 @@ export default class GMaps extends React.Component {
       markers.push(marker);
       infoWindowContent.push(contentString)
      }
-
     //set info windows
 
-    var prev_infowindow = false; 
-    
+    var prev_infowindow = false;
+
     for (var i = 0; i < markers.length; i++) {
 
         var infowindow = new google.maps.InfoWindow({
@@ -133,11 +132,74 @@ export default class GMaps extends React.Component {
   	//heatmap.set('dissipating', false);
   	heatmap.set('radius', 40);
 
-    _this.setState({map: map, heatmap: heatmap});
+    _this.setState({map: map, heatmap: heatmap, markers: markers});
   }
 
   componentDidMount(){
     this.initMap();
+  }
+  componentWillReceiveProps(){
+    //Cleanup map
+    var markers = this.state.markers;
+    for(var i =0; i < markers.length; i++){
+      markers[i].setMap(null);
+    }
+    this.setState({markers: []});
+
+    //add new markers
+    var _this = this;
+    var markers = [];
+    var infoWindows = [];
+    var infoWindowContent = []
+
+    for (var i = this.props.londonProperties.length - 1; i >= 0; i--) {
+      var lat = this.props.londonProperties[i].latitude;
+      var lng = this.props.londonProperties[i].longitude;
+      var title =this.props.londonProperties[i].displayable_address;
+      var contentString = '<div class="infoBoxContent">'+
+        '<img src="'+this.props.londonProperties[i].agent_logo+'" alt="Agent Logo" width="42" height="42">'+
+        '<h2 class="firstHeading">'+ this.props.londonProperties[i].displayable_address + '</h2>'+
+        '<img src="'+this.props.londonProperties[i].thumbnail_url+'" alt="property Logo" width="42" height="42">'+
+        '<div id="bodyContent">'+
+        '<p>'+ this.props.londonProperties[i].description+
+        '</p>'+
+        '<p><a target="_blank" href="'+ this.props.londonProperties[i].details_url+'">'+
+        'more details</a> '+
+        '</p>'+
+        '</div>'+
+        '</div>';
+
+      var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(lat, lng),
+          map: _this.state.map,
+          title: title,
+          icon: 'http://cleanair.me.uk/assets/images/marker.png'
+        });
+
+      markers.push(marker);
+      infoWindowContent.push(contentString)
+     }
+     var prev_infowindow = false;
+     for (var i = 0; i < markers.length; i++) {
+
+         var infowindow = new google.maps.InfoWindow({
+           content: infoWindowContent[i]
+         });
+
+         infoWindows.push(infowindow);
+
+         google.maps.event.addListener(markers[i], 'click', function(i) {
+           return function() {
+             if( prev_infowindow ) {
+                prev_infowindow.close();
+             }
+
+             prev_infowindow = infoWindows[i];
+             infoWindows[i].open(_this.state.map, markers[i]);
+           }
+         }(i));
+     }
+     this.setState({markers: markers});
   }
   componentDidUpdate(){
     var coords = (this.props.geolocation.lat != undefined && this.props.geolocation.lon != undefined)? {lat: this.props.geolocation.lat,lon: this.props.geolocation.lon} : defaultcoords;

@@ -21,7 +21,6 @@ export default class PropertyModal extends React.Component {
     var value = parseInt(event.target.value);
     var obj = {};
     obj[key] = value;
-    console.log(obj);
     this.props.updateFilters(obj);
   }
   isChecked(key){
