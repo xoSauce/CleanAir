@@ -155,20 +155,20 @@ label {
 
 .text-box {
   text-align:left;
-  width: 450px; 
-  float: left; 
-  margin: 5px 10px 5px 20px; 
-  padding: 6px; 
+  width: 430px; 
+  margin: 5px 5px 5px 30px;  
+  padding-left: 5px;
+  padding-right: 5px;
   overflow: auto; 
-  font-size: 13px; 
-  background-color: #e1e1e1; 
-  border: 2px ridge #99CCFF; 
+  font-size: 0.75em; 
+  background-color: #e6e6e6; 
+  border: 2px ridge #C4E9E2; 
   height: 150px; 
 }
 
 .info-wrapper{
-  width: 500px;
   height: 500px;
+  width: 500px;
   overflow: scroll;
 }
 
@@ -188,6 +188,24 @@ label {
   padding: 10px;
   height: auto;
   text-align: left;
+  text-transform: uppercase;
+  font-size: 0.5em;
+  font-weight: 900;
+  color: #2B8A77;
+  letter-spacing: 2px;
+}
+
+.sidebar-info {
+  position: static;
+  width: 430px;
+  height: auto;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin: 5px 5px 5px 30px;  
+  padding: 10px;
+  height: auto;
+  text-align: center;
   text-transform: uppercase;
   font-size: 0.5em;
   font-weight: 900;

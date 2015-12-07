@@ -31,7 +31,7 @@ export default class VentilationSection extends React.Component {
     var range = this.getSomeRange();
     return(
       <div onClick={this.toggleText.bind(this)}>
-        <h3>{this.props.title}</h3>
+        <div className={"sidebar-info sidebar-green"}>{this.props.title}</div>
         <div style={((this.state.showText)? {}: {display: 'none'})}>
           <div className="text-box">
             <p>Outdoor air pollution is a known contributor to indoor air pollution quality. If you choose or are living at this location you should:</p>
