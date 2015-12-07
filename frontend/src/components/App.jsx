@@ -48,6 +48,11 @@ var App = React.createClass({
         minprice: null,
         maxprice: null,
         minbeds: null
+      },
+      preferences: {
+        age: 'none',
+        children: 'none',
+        respiratory_issues:[]
       }
     }
 
@@ -63,6 +68,9 @@ var App = React.createClass({
       if(ls_value[0] == 1){
           obj.londonProperties = ls_value[1]
       }
+    }
+    if(ls.preferences!=undefined){
+      obj.preferences = JSON.parse(ls.preferences);
     }
     for(var key in obj.filters){
       var ls_key = 'settings_' + key;
@@ -175,8 +183,19 @@ var App = React.createClass({
       }
       return true;
     });
-    console.log(this.state.londonProperties.length, filteredProperties.length);
     this.setState({filteredProperties: filteredProperties});
+  },
+  updatePreferences: function(options){
+    var preferences = this.state.preferences;
+    for(var key in preferences){
+      for(var option_key in options){
+        if(key == option_key){
+          preferences[option_key] = options[option_key];
+        }
+      }
+    }
+    ls['preferences'] = JSON.stringify(preferences);
+    this.setState({preferences: preferences});
   },
   render: function() {
     var _this = this;
@@ -187,7 +206,9 @@ var App = React.createClass({
           londonProperties: _this.state.filteredProperties,
           storeLocation: _this.storeLocation,
           updateFilters: _this.updateFilters,
-          filters: _this.state.filters});
+          filters: _this.state.filters,
+          updatePreferences: _this.updatePreferences,
+          preferences: _this.state.preferences});
     });
     return (
       <div>

@@ -15,7 +15,9 @@ export default class Map extends React.Component {
     var children = React.Children.map(this.props.children, function(child) {
         return React.cloneElement(child, {
           updateFilters: _this.props.updateFilters,
-          filters: _this.props.filters});
+          filters: _this.props.filters,
+          updatePreferences: _this.props.updatePreferences,
+          preferences: _this.props.preferences});
     });
     return (
       <div id="panel">
