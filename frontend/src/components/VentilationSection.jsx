@@ -31,13 +31,15 @@ export default class VentilationSection extends React.Component {
     var range = this.getSomeRange();
     return(
       <div onClick={this.toggleText.bind(this)}>
-        <h1>{this.props.title}</h1>
+        <h3>{this.props.title}</h3>
         <div style={((this.state.showText)? {}: {display: 'none'})}>
-          <p>Outdoor air pollution is a known contributor to indoor air pollution quality. If you choose or are living at this location you should:</p>
-          <p>Ventilate your home between <strong>{range}</strong> as this is when the levels of pollution in your surrounding area are at their lowest.</p>
-          <p>It is important to ventilate your home on a daily basis. 90% of time is spent in the home. It is estimated that the levels of pollution inside your home on average is 2-5 times greater than outdoors.</p>
-          <p>Choosing to open windows for ventilation on the side of the house not facing a busy street is also another precaution which can be taken to reduce your pollution intake.</p>
-          <p>For more information on how you can reduce your indoor levels of pollution exposure visit: <a href="http://www3.epa.gov/airquality/peg_caa/reduce.html">http://www3.epa.gov/airquality/peg_caa/reduce.html</a></p>
+          <div className="text-box">
+            <p>Outdoor air pollution is a known contributor to indoor air pollution quality. If you choose or are living at this location you should:</p>
+            <p>Ventilate your home between <strong>{range}</strong> as this is when the levels of pollution in your surrounding area are at their lowest.</p>
+            <p>It is important to ventilate your home on a daily basis. 90% of time is spent in the home. It is estimated that the levels of pollution inside your home on average is 2-5 times greater than outdoors.</p>
+            <p>Choosing to open windows for ventilation on the side of the house not facing a busy street is also another precaution which can be taken to reduce your pollution intake.</p>
+            <p>For more information on how you can reduce your indoor levels of pollution exposure visit: <a href="http://www3.epa.gov/airquality/peg_caa/reduce.html">http://www3.epa.gov/airquality/peg_caa/reduce.html</a></p>
+          </div>
         </div>
       </div>
     )

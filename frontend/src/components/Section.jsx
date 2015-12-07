@@ -14,9 +14,11 @@ export default class Section extends React.Component {
   render(){
     return(
       <div onClick={this.toggleText.bind(this)}>
-        <h1>{this.props.title}</h1>
+        <h3>{this.props.title}</h3>
         <div style={((this.state.showText)? {}: {display: 'none'})}>
-          {this.props.text.map(function(x){return <p>{x}</p>})}
+          <div className="text-box">
+            {this.props.text.map(function(x){return <p>{x}</p>})}
+          </div>
         </div>
       </div>
     )

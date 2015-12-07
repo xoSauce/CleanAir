@@ -153,6 +153,26 @@ label {
   background-color: white;
 }
 
+.text-box {
+  text-align:left;
+  width: 450px; 
+  float: left; 
+  margin: 5px 10px 5px 20px; 
+  padding: 6px; 
+  overflow: auto; 
+  font-size: 13px; 
+  background-color: #e1e1e1; 
+  border: 2px ridge #99CCFF; 
+  height: 150px; 
+}
+
+.info-wrapper{
+  width: 500px;
+  height: 500px;
+  overflow: scroll;
+}
+
+
 .input-group-wrapper{
   display:inline-block;
   text-align:left;
