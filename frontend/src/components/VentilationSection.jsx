@@ -16,7 +16,8 @@ export default class VentilationSection extends React.Component {
   }
   getSomeRange(){
     var today = new Date();
-    var hours = today.getHours() + this.getRandomInt(0, 100);
+
+    var hours = [0,1,2,3,4,10,11][this.getRandomInt(0,6)];
     // var minutes = today.getMinutes() + this.getRandomInt(0,100);
     var minutes = [0, 15, 30, 45][this.getRandomInt(0,3)];
     hours = hours % 10;
