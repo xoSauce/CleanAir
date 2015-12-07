@@ -52,7 +52,7 @@ export default class GMaps extends React.Component {
     var markers = [];
     var infoWindows = [];
     var infoWindowContent = []
-
+    console.log(this.props.londonProperties);
     for (var i = this.props.londonProperties.length - 1; i >= 0; i--) {
       var lat = this.props.londonProperties[i].latitude;
       var lng = this.props.londonProperties[i].longitude;

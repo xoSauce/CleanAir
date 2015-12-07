@@ -67,7 +67,12 @@ export default class PropertyModal extends React.Component {
               <input type="number" name='minbeds' onChange={this.updateNumberPreference.bind(this)} placeholder="No min" value={(this.props.filters.minbeds != undefined)? this.props.filters.minbeds : ''}/>
             </div>
           </div>
-
+          <hr/>
+          <div className="input-group-wrapper">
+            <div className="input-group">
+              <Link className="btn btn-success" to={"/map"}>Submit</Link>
+            </div>
+          </div>
         </div>
       </div>
       )

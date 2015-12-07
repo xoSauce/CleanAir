@@ -61,7 +61,7 @@ var App = React.createClass({
     if(ls.londonProperties!=undefined){
       var ls_value = JSON.parse(ls.londonProperties);
       if(ls_value[0] == 1){
-          obj.londonProperties = JSON.parse(ls.londonProperties)
+          obj.londonProperties = ls_value[1]
       }
     }
     for(var key in obj.filters){
