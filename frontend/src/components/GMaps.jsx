@@ -134,7 +134,7 @@ export default class GMaps extends React.Component {
     var locationMarker = new google.maps.Marker({
         position: new google.maps.LatLng(this.props.geolocation.lat, this.props.geolocation.lon),
         map: map,
-        title: 'You are here'
+        icon: 'http://cleanair.me.uk/assets/images/locationlogo.png'
     });
 
     _this.setState({map: map, heatmap: heatmap, markers: markers, locationMarker: locationMarker});
