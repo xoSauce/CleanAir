@@ -131,20 +131,25 @@ export default class GMaps extends React.Component {
   	//heatmap.set('dissipating', false);
   	heatmap.set('radius', 40);
 
-    _this.setState({map: map, heatmap: heatmap, markers: markers});
+    var locationMarker = new google.maps.Marker({
+        position: new google.maps.LatLng(this.props.geolocation.lat, this.props.geolocation.lon),
+        map: map,
+        title: 'You are here'
+    });
+
+    _this.setState({map: map, heatmap: heatmap, markers: markers, locationMarker: locationMarker});
   }
 
   componentDidMount(){
     this.initMap();
   }
-  componentWillReceiveProps(){
+  componentWillReceiveProps(newprops){
     //Cleanup map
     var markers = this.state.markers;
     for(var i =0; i < markers.length; i++){
       markers[i].setMap(null);
     }
     this.setState({markers: []});
-
     //add new markers
     var _this = this;
     var markers = [];
@@ -199,6 +204,14 @@ export default class GMaps extends React.Component {
          }(i));
      }
      this.setState({markers: markers});
+     this.state.locationMarker.setMap(null);
+     var locationMarker = new google.maps.Marker({
+         position: new google.maps.LatLng(newprops.geolocation.lat, newprops.geolocation.lon),
+         map: this.state.map,
+         title: 'You are here',
+         icon: 'http://cleanair.me.uk/assets/images/locationlogo.png'
+      });
+      this.setState({locationMarker: locationMarker});
   }
   componentDidUpdate(){
     var coords = (this.props.geolocation.lat != undefined && this.props.geolocation.lon != undefined)? {lat: this.props.geolocation.lat,lon: this.props.geolocation.lon} : defaultcoords;
