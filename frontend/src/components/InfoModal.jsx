@@ -54,7 +54,7 @@ export default class InfoModal extends React.Component {
         <div className="modal-inner">
           <div className="info-wrapper">
             <Link id="close-info" to={"/map"}>Close</Link>
-            <h1>Recommendations</h1>
+            <h2>Recommendations</h2>
             <Section title="Age-related air pollution impacts" text={sections.age}/>
             <Section title="Impacts on children and adolescents" text={sections.children}/>
             <Section title="Respiratory health and air pollution" text={sections.respiratory_issues}/>
