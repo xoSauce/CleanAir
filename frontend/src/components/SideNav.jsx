@@ -38,8 +38,8 @@ export default class SideNav extends React.Component {
           <hr/>
           <Link className="btn btn-success sidebar-bigbtn" to={"/map"}>Search <i className={"icon-search"}></i></Link>
           <div className="toggle-button" onClick={this.toggleShow.bind(this)}>{this.state.show? <i className={"icon-chevron-left"}></i>: <i className={"icon-chevron-right"}></i>}</div>
+          <a style={{position: 'absolute', bottom: 0, left: 0}}href="http://www.zoopla.co.uk/"><img src="http://www.zoopla.co.uk/static/images/mashery/powered-by-zoopla-150x73.png" width="150" height="73" title="Property information powered by Zoopla" alt="Property information powered by Zoopla" border="0"/></a>
         </div>
-        <a style={{position: 'absolute', bottom: 0, left: 0}}href="http://www.zoopla.co.uk/"><img src="http://www.zoopla.co.uk/static/images/mashery/powered-by-zoopla-150x73.png" width="150" height="73" title="Property information powered by Zoopla" alt="Property information powered by Zoopla" border="0"/></a>
       </div>
       )
   }
