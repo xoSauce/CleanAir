@@ -9,6 +9,9 @@ export default class InfoModal extends React.Component {
   close(){
     this.props.history.replaceState(null, '/map');
   }
+  stop(event){
+    event.stopPropagation();
+  }
   getSections(){
     var preferences = this.props.preferences;
     var sections = {
@@ -51,12 +54,12 @@ export default class InfoModal extends React.Component {
 
     return(
       <div className="modal-wrapper" onClick={this.close.bind(this)}>
-        <div className="modal-inner">
+        <div className="modal-inner" onClick={this.stop.bind(this)}>
           <div className="info-wrapper">
-            <Link id="close-info" to={"/map"}>Close</Link>
+            <Link to="/map">Close</Link>
             <h2>Recommendations</h2>
             <Section title="Age-related air pollution impacts" text={sections.age}/>
-            <Section title="Impacts on children and adolescents" text={sections.children}/>
+            {(sections.children.length>0)?<Section title="Impacts on children and adolescents" text={sections.children}/>:<span/>}
             <Section title="Respiratory health and air pollution" text={sections.respiratory_issues}/>
             <VentilationSection title="When you should ventilate your home"/>
           </div>

@@ -5,9 +5,9 @@ var Link = require('react-router').Link;
 
 export default class Intro extends React.Component {
   componentDidMount(){
-    if(this.props.pollution.length > 0){
-      this.props.history.replaceState(null, '/select-location');
-    }
+    // if(this.props.pollution.length > 0){
+    //   this.props.history.replaceState(null, '/select-location');
+    // }
   }
   render(){
     return(
